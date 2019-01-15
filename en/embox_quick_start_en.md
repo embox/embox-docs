@@ -112,7 +112,7 @@ Required packages for QEMU for different architectures:
 ```
     $ sudo apt-get install qemu-system-<ARCH>
 ```
-Where <ARCH>: i386, arm, sparc, mips, ppc or misc (для microblaze).
+Where <ARCH>: i386, arm, sparc, mips, ppc or misc (for microblaze).
 
 Notice: QEMU with all supported architectures can be installed with a single command:
 ```
