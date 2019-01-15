@@ -1,4 +1,4 @@
-# embox-docs - are markdown documantations for Embox
+# embox-docs - markdown documentations for Embox 
 
 You can use pandoc to compile to pdf format. For example:
 
