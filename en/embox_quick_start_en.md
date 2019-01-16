@@ -120,5 +120,60 @@ Notice: QEMU with all supported architectures can be installed with a single com
 ```
 
 ## Build and execute on QEMU
+Set up default configuration for desired platform:
+```
+    $ make confload-<ARCH>/qemu
+```
+where <ARCH>: x86, arm, mips, ppc, sparc, microblaze.
+Example for x86:
+```
+    make confload-x86/qemu
+```
+Build Embox:
+```
+    $ make
+```
+or for parallel building:
+```
+    $ make (-jN)
+```
+Example build on 4 threads:
+```
+    $ make -j4
+```
+Execute:
+```
+    $ ./scripts/qemu/auto_qemu
+```
+Console output example:
+```
+Embox kernel start
+	unit: initializing embox.kernel.task.task_resource: done
+	unit: initializing embox.mem.vmem_alloc: done
+```
+If all unit-tests where success and all modules loaded, command prompt will appear and you can type and execute commands included in the configuration. You can start with ***'help'*** which print enabled commands list.
 
+For exit press ***ctrl+’A’*** and than ***‘x’***.
+
+## Paticulars of Mybuild build system
+Embox - modular and configurable. Declarative program language Mybuild has been developed for this features. Mybuild allows to describe both single modules and whole target system.
+A module is a base concept for build system. The module description contains: source files list, options which can be set for the module during configuration and dependences list.
+The configuration is a paticular description of whole system. It contains: required list module, set up modules options and build rules (cross-compiler, additional compiler flags, memory map etc.). Graph of system desing base on the configuration and module descriptions and than generate different build artifacts: linker scripts, makefiles, headers. It's not necesary to point all modules, they will enabled by dependences list from module descriptions.
+
+Current configuration locates in ***conf/*** folder. It can be set up with
+```
+    $ make confload-<CONF_NAME>
+```
+For example, for set up demo canfiguration for executing qemu-arm you should 
+```
+    $ make confload-arm/qemu
+```.
+
+Use 
+```
+    $ make confload
+```
+to show of ready configurations list.
+
+After set up current configuration you can change feaches for your requiments. It's enouph to add string ***include <PACKAGE_NAME><MODULE_NAME>*** to ***conf/mods.conf*** file to enable some of missed application. Example, to enable ***`help`*** command you have to add ***include embox.cmd.help***
 
