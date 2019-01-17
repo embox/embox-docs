@@ -6,21 +6,21 @@ date: "20 january 2019"
 # Quick Overview
 Embox is a real-time operating system for embedded systems.
 
-Embox is a cross-platform operating system. All arch-dependent code is organized as separate modules. It makes porting process to a new platform easy. Currently, Embox supports following architectures: SPARC, Microblaze, ARM, MIPS, PPC, x86, E2k.
+Embox is a cross-platform operating system. All arch-dependent code is organized as separate modules. It makes porting process to a new platform easy. Currently, Embox supports following architectures: ARM, x86, SPARC, Microblaze, MIPS, PPC, E2k.
 
 Embox is a multitasking operating system and supports different priority levels, preemptive and cooperative multitasking, priority inheritance and different synchronization primitives.
 
 Embox provides POSIX-compatible layer, which allows to use a lot of existing Linux software. For example, Qt embedded, SSH server — Dropbear, PJSIP.
 
-Embox development process is usual and pretty common for all platforms including resources restricted platforms such as MCUs because using a standard toolset. Usually, it's only required to change the architecture dependent part in your configuration file.
+Embox development process is usual and pretty common for all platforms including resources restricted platforms such as MCUs because of using standard toolset.
 
-Embox has low resources requirement in that designed as modular and configurable project. During configure may be chosen which modules will be in a final image.
+Embox has low resources requirements because it is designed as a modular and configurable project. During the configuration stage, one can choose which modules will be included in the final image.
 
 Embox allows to create secure systems. Statically building ensures that functionalities weren’t included in the target image couldn’t be executed.
 
-Embox is suitable for Internet Of Things (IoT). It has well TCP/IP stack, a rich set of user software, but at the same time, it has low resource requires.
+Embox is suitable for Internet Of Things (IoT). It has well TCP/IP stack, a rich set of user software, but at the same time, it has low resources requirements.
 
-Embox is suitable for robots. It allows to combine in a one system tasks with rich functionalities and real-time tasks.
+Embox is suitable for robots. It allows to combine in one system tasks with rich functionalities and real-time tasks. You can create your own POSIX compatible application to control servos, motors, sensors etc., communicating with your robot through a network at the same time.
 
 # Quick start
 It’s better if get started with Embox running one on the qemu emulator, which supported different CPU architectures.
@@ -177,3 +177,76 @@ to show of ready configurations list.
 
 After set up current configuration you can change feaches for your requiments. It's enouph to add string ***include <PACKAGE_NAME><MODULE_NAME>*** to ***conf/mods.conf*** file to enable some of missed application. Example, to enable ***`help`*** command you have to add ***include embox.cmd.help***
 
+# "Hello word" application
+Embox application is an Embox module, which description contains attributes shown that the module is an executable application. Source code Embox application is usual C-code and can be compiled under Linux.
+
+## Creation and Execution
+To add own simplest application "Hello world" you have to do follow:
+
+* Create folder *hello_world* in *src/cmds*:
+
+```
+     $ mkdir src/cmds/hello_world
+```
+* Create source file *src/cmds/hello_world/hello_world.c* contains follow:
+
+```
+     #include <stdio.h>
+
+     int main(int argc, char **argv) {
+          printf("Hello, world!\n");
+     }
+```
+
+* Create file with module description *src/cmds/hello_world/Mybuild*:
+
+```
+     package embox.cmd
+
+     @AutoCmd
+     @Cmd(name = "hello_world", help=”First Embox application”)
+     module hello_world {
+     	source "hello_world.c"
+     }
+```
+
+* Add to file configuration *conf/mods.conf* follow string:
+
+```
+     include embox.cmd.hello_world
+```
+
+* Build Embox:
+
+```
+     $ make
+```
+
+ * Execute Embox:
+
+```
+     $ ./scripts/qemu/auto_qemu
+```
+
+ * Type ***help*** in appeared console to check there is ***hello_world*** in the command list. Execute it typing ***hello_world*** in console. You message printing with *printf* must be appeared.
+
+```
+     root@embox:/#hello_world
+     Hello, world!
+     root@embox:/#
+```
+
+## File module descriptions
+Parse Mybuild file from "Hello world" example:
+
+```
+     package embox.cmd
+
+     @AutoCmd
+     @Cmd(name = "hello_world", help=”First Embox application”)
+     module hello_world {
+     	source "hello_world.c"
+     }
+```
+
+The first line contains package name ***embox.cmd***. In Embox all modules are distributed to packages. Full module name consist of package name and module name. Module name is defined in string ***module hello_world***.
