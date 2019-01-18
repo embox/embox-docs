@@ -23,49 +23,50 @@ Embox is suitable for Internet Of Things (IoT). It has well TCP/IP stack, a rich
 Embox is suitable for robots. It allows to combine in one system tasks with rich functionalities and real-time tasks. You can create your own POSIX compatible application to control servos, motors, sensors etc., communicating with your robot through a network at the same time.
 
 # Quick start
-It’s better if get started with Embox running one on the qemu emulator, which supported different CPU architectures.
+It’s better to get started with Embox running on QEMU emulator, which supports different CPU architectures.
 
 ## Getting Embox
-clone git repository:
+Clone git repository:
 ```
     $ git clone https://github.com/embox/embox
 ```
 Or download as an archive [https://github.com/embox/embox/releases](https://github.com/embox/embox/releases)
 
 ## Work on Windows or MacOS
-The main Embox developer platform is Linux. All descriptions below are given for one. If you have Windows or MacOS it’s better use docker there is a correct environment for starting.
-For using:
+The main Embox development platform is Linux, so all descriptions below are given for Linux. If you are using Windows or MacOS, it’s better to use Docker with already installed environment for starting. You can start using our Docker (emdocker) in the following way:
 
- * Install docker for your platform.
- * make sure that docker was installed correctly by commands:
+ * Install docker for your OS.
+ * Make sure docker was installed correctly:
 ```
     $ docker-machine ls
     $ docker-machine start default
 ```
- * Go to folder with Embox.
- * Launch docker with
+ * Go to Embox root folder.
+ * Launch docker:
 ```
     $ ./scripts/docker/docker_start.sh
 ```
- * Execute script
+ * Source the script:
 ```
     $ . ./scripts/docker/docker_rc.sh
 ```
-to simplify further work. This script create alias with `dr` and `docker run`
+to simplify further work. Roughly speaking, this script mainly creates an alias between `dr` and `docker run`.
 
-And than before each command you should type `dr`. For example:
+And than you should prepend every command with `dr` to execute it inside the docker container. For example:
 ```
     $ dr make confload-x86/qemu
     $ dr make
     $ dr ./scripts/qemu/auto_qemu
 ```
-For configure and building default template.
-After install and check you can miss section Environment Settings and go to section “Build and run on QEMU”
+to configure and build default template for x86.
+
+After docker installation you can skip the section "Environment Settings" below and go directly to the section “Build and run on QEMU”.
 
 ## Enviroment Settings
-Minimal required packages are: make, gcc, (cross-compiler for target platform. see "Cross-compiler installation").
-Optional packages which recomended to install at once: build-essential gcc-multilib curl libmpc-dev python
-For Debian:
+Minimal required packages: *make*, *gcc*, (cross-compiler for target platform. see "Cross-compiler installation").
+Optional packages which are recomended to install at once: *build-essential*, *gcc-multilib*, *curl*, *libmpc-dev*, *python*.
+
+For Debian/Ubuntu:
 ```
     $ sudo apt-get install make gcc \
         build-essential gcc-multilib \
@@ -82,7 +83,8 @@ For Arch:
 ```
     $ sudo apt-get install gcc
 ```
-It's already installed a package usually. You also required 'gcc-multilib'. You require to install another if you set up the enviroment on Windows or MacOS yourself.
+Usually, these packages are already installed for your OS. You are also required to install `gcc-multilib`.
+Please note, it's required to install another packages if you already set up the environment on Windows or MacOS by yourself.
 
 ***ARM***:
 ```
@@ -92,35 +94,37 @@ or for Debian:
 ```
     $ sudo apt install gcc-arm-none-eabi
 ```
-You also can downloaded archive with ARM cross-tools from site [https://launchpad.net/gcc-arm-embedded](https://launchpad.net/gcc-arm-embedded)
-Extract the archive and set PATH enviroment variable 
+You can also download the archive with ARM cross-tools from [https://launchpad.net/gcc-arm-embedded](https://launchpad.net/gcc-arm-embedded)
+Extract files from archive and set *PATH* enviroment variable:
 ```
     $ export PATH=$PATH:<path to toolchain>/gcc-arm-none-eabi-<version>/bin
 ```
 
 ***SPARC, Microblaze, MIPS, PowerPC, MSP430***:
-You can use own cross-compiler based on gcc. But it's better if you make use to our project for installing cross-compiler [https://github.com/embox/crosstool](https://github.com/embox/crosstool). You can use to ready archives from [https://github.com/embox/crosstool/releases](https://github.com/embox/crosstool/releases). Or build demanded cross-compiler with the script from the project
+You can try to use some cross-compiler based on gcc in case if you already have a suitable one.
+But it would be better if you will use our project for cross-compiler installation [https://github.com/embox/crosstool](https://github.com/embox/crosstool).
+You can use already ready-to-use archives from [https://github.com/embox/crosstool/releases](https://github.com/embox/crosstool/releases). Or you can build cross-compiler with the script in the project's root folder:
 ```
     $ ./crosstool.sh ARCH
 ```
-In the result have to appear ***ARCH-elf-toolchain.tar.bz2*** archive. Than you have to extract it and set up 'PATH' enviroment variable.
+As the result ***ARCH-elf-toolchain.tar.bz2*** archive will be created. Than you need to extract files from the archive and set up 'PATH' enviroment variable.
 
 ## QEMU installation
 Supported CPU architectures: x86, ARM, MIPS, Sparc, PPC, Microblaze.
 
-Required packages for QEMU for different architectures:
+QEMU can be installed in the following way:
 ```
     $ sudo apt-get install qemu-system-<ARCH>
 ```
 Where <ARCH>: i386, arm, sparc, mips, ppc or misc (for microblaze).
 
-Notice: QEMU with all supported architectures can be installed with a single command:
+Notice: QEMU packages for all supported architectures can be installed with a single command:
 ```
     $ sudo apt-get install qemu-system
 ```
 
-## Build and execute on QEMU
-Set up default configuration for desired platform:
+## Build and run on QEMU
+Set up default configuration for the desired platform:
 ```
     $ make confload-<ARCH>/qemu
 ```
@@ -135,13 +139,14 @@ Build Embox:
 ```
 or for parallel building:
 ```
-    $ make (-jN)
+    $ make -jN
 ```
-Example build on 4 threads:
+Example of how to build with 4 parallel jobs:
 ```
     $ make -j4
 ```
-Execute:
+
+Now you are able to run Embox:
 ```
     $ ./scripts/qemu/auto_qemu
 ```
@@ -151,44 +156,51 @@ Embox kernel start
 	unit: initializing embox.kernel.task.task_resource: done
 	unit: initializing embox.mem.vmem_alloc: done
 ```
-If all unit-tests where success and all modules loaded, command prompt will appear and you can type and execute commands included in the configuration. You can start with ***'help'*** which print enabled commands list.
+If all unit tests passed successfully and all modules loaded, then command prompt will appear.
+Now you can execute commands included in the configuration (`mods.conf`). You can start with ***help*** command which prints list of available commands.
 
-For exit press ***ctrl+’A’*** and than ***‘x’***.
+Press ***ctrl+’A’*** and then '***x***' to exit from Qemu.
 
-## Paticulars of Mybuild build system
-Embox - modular and configurable. Declarative program language Mybuild has been developed for this features. Mybuild allows to describe both single modules and whole target system.
-A module is a base concept for build system. The module description contains: source files list, options which can be set for the module during configuration and dependences list.
-The configuration is a paticular description of whole system. It contains: required list module, set up modules options and build rules (cross-compiler, additional compiler flags, memory map etc.). Graph of system desing base on the configuration and module descriptions and than generate different build artifacts: linker scripts, makefiles, headers. It's not necesary to point all modules, they will enabled by dependences list from module descriptions.
+## Preliminaries to Mybuild build system
+Embox is modular and configurable. Declarative program language Mybuild has been developed for these features. Mybuild allows to describe both single modules and whole target system.
+A module is a base concept for build system. A module description contains: source files list, options which can be set for the module during configuration, and dependences list.
+The configuration is a particular description of the whole system. It contains list of required modules, modules options and build rules (cross-compiler, additional compiler flags, memory map etc.).
+Graph of the system will be based on the configuration and modules descriptions.
+Build system then generates different build artifacts: linker scripts, makefiles, headers.
+It's not necesary to include all modules, they will be enabled using dependencies for each module included in the initial configuration list.
 
-Current configuration locates in ***conf/*** folder. It can be set up with
+Current configuration locates in ***conf/*** folder. It can be set up with:
 ```
     $ make confload-<CONF_NAME>
 ```
-For example, for set up demo canfiguration for executing qemu-arm you should 
+For example, to set up demo configuration for qemu-arm you should do the following:
 ```
     $ make confload-arm/qemu
-```.
+```
 
 Use 
 ```
     $ make confload
 ```
-to show of ready configurations list.
+to get the list of all possible configurations.
 
-After set up current configuration you can change feaches for your requiments. It's enouph to add string ***include <PACKAGE_NAME><MODULE_NAME>*** to ***conf/mods.conf*** file to enable some of missed application. Example, to enable ***`help`*** command you have to add ***include embox.cmd.help***
+After you set up some configuration you can tune configuration due to your requirements.
+You can add ***include \<PACKAGE_NAME\>\<MODULE_NAME\>*** to your ***conf/mods.conf*** file to enable additional application.
+For example, add ***include embox.cmd.help*** to enable ***`help`*** command.
 
-# "Hello word" application
-Embox application is an Embox module, which description contains attributes shown that the module is an executable application. Source code Embox application is usual C-code and can be compiled under Linux.
+## "Hello world" application
+Embox application is an usual Embox module with special attributes. These attributes declare your module as an executable application.
+Source code of Embox application is usual POSIX program written in C, and so can be compiled under Linux too.
 
-## Creation and Execution
-To add own simplest application "Hello world" you have to do follow:
+### Creation and Execution
+To add your own simplest application "Hello world" you can do the following:
 
 * Create folder *hello_world* in *src/cmds*:
 
 ```
      $ mkdir src/cmds/hello_world
 ```
-* Create source file *src/cmds/hello_world/hello_world.c* contains follow:
+* Create *src/cmds/hello_world/hello_world.c*:
 
 ```
      #include <stdio.h>
@@ -198,7 +210,7 @@ To add own simplest application "Hello world" you have to do follow:
      }
 ```
 
-* Create file with module description *src/cmds/hello_world/Mybuild*:
+* Create file *src/cmds/hello_world/Mybuild* with your module description:
 
 ```
      package embox.cmd
@@ -210,7 +222,7 @@ To add own simplest application "Hello world" you have to do follow:
      }
 ```
 
-* Add to file configuration *conf/mods.conf* follow string:
+* Now add the application into your configuration *conf/mods.conf*:
 
 ```
      include embox.cmd.hello_world
@@ -222,13 +234,13 @@ To add own simplest application "Hello world" you have to do follow:
      $ make
 ```
 
- * Execute Embox:
+ * Run Embox:
 
 ```
      $ ./scripts/qemu/auto_qemu
 ```
 
- * Type ***help*** in appeared console to check there is ***hello_world*** in the command list. Execute it typing ***hello_world*** in console. You message printing with *printf* must be appeared.
+ * Type ***help*** in Embox console to check if there is ***hello_world*** in commands list. Execute ***hello_world*** command and you will see:
 
 ```
      root@embox:/#hello_world
@@ -236,8 +248,8 @@ To add own simplest application "Hello world" you have to do follow:
      root@embox:/#
 ```
 
-## File module descriptions
-Parse Mybuild file from "Hello world" example:
+### Mybuild file for "Hello World"
+Let's look at the Mybuild file from "Hello world" example in more details:
 
 ```
      package embox.cmd
@@ -249,4 +261,5 @@ Parse Mybuild file from "Hello world" example:
      }
 ```
 
-The first line contains package name ***embox.cmd***. In Embox all modules are distributed to packages. Full module name consist of package name and module name. Module name is defined in string ***module hello_world***.
+The first line contains package name ***embox.cmd***. In Embox all modules are organized into packages.
+Full module name consist of the corresponding package name appended with module name. Module name is defined in string ***module hello_world***.
