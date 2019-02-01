@@ -13,7 +13,14 @@ quick_overview_en:
 
 
 user_manual_ru:
-	pandoc ru/embox_user_manual_header_ru.md ru/embox_quick_overview_ru.md ru/embox_quick_start_ru.md ru/embox_user_manual_ru.md -o embox_user_manual_ru.pdf
+	pandoc ru/embox_user_manual_header_ru.md \
+	ru/embox_quick_overview_ru.md \
+	ru/embox_quick_start_ru.md \
+	ru/embox_modular_structure_ru.md \
+	ru/embox_hello_world_example_ru.md \
+	ru/embox_blinking_led_example_ru.md \
+	ru/embox_external_app_example_ru.md \
+	-o embox_user_manual_ru.pdf
 
 quick_start_ru:
 	pandoc ru/embox_quick_start_header_ru.md ru/embox_quick_overview_ru.md ru/embox_quick_start_ru.md -o embox_quick_start_ru.pdf
