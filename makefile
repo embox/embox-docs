@@ -13,7 +13,7 @@ quick_overview_en:
 
 
 user_manual_ru:
-	pandoc \
+	pandoc --template=embox_pandoc.latex \
 	ru/embox_user_manual_header_ru.md \
 	ru/embox_quick_overview_ru.md \
 	ru/embox_quick_start_ru.md \
@@ -28,10 +28,17 @@ user_manual_ru:
 	-o embox_user_manual_ru.pdf
 
 quick_start_ru:
-	pandoc ru/embox_quick_start_header_ru.md ru/embox_quick_overview_ru.md ru/embox_quick_start_ru.md -o embox_quick_start_ru.pdf
+	pandoc --template=embox_pandoc.latex \
+	ru/embox_quick_start_header_ru.md \
+	ru/embox_quick_overview_ru.md \
+	ru/embox_quick_start_ru.md \
+	-o embox_quick_start_ru.pdf
 
 quick_overview_ru:
-	pandoc ru/embox_quick_overview_header_ru.md ru/embox_quick_overview_ru.md -o embox_quick_overview_ru.pdf
+	pandoc --template=embox_pandoc.latex \
+	ru/embox_quick_overview_header_ru.md \
+	ru/embox_quick_overview_ru.md \
+	-o embox_quick_overview_ru.pdf
 
 en: quick_overview_en quick_start_en user_manual_en
 
