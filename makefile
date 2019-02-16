@@ -26,7 +26,7 @@ quick_overview_en:
 
 user_manual_ru:
 	pandoc --template=embox_pandoc.latex \
-	ru/embox_user_manual_header_ru.md \
+	ru/headers/embox_user_manual_header_ru.md \
 	ru/embox_quick_overview_ru.md \
 	ru/embox_quick_start_ru.md \
 	ru/embox_supported_platforms_ru.md \
@@ -34,24 +34,24 @@ user_manual_ru:
 	ru/embox_supported_platforms_x86_ru.md \
 	ru/embox_supported_platforms_arm_ru.md \
 	ru/embox_modular_structure_ru.md \
-	ru/embox_build_execute_debug_ru.md \
 	ru/embox_drivers_ru.md \
+	ru/embox_build_ru.md \
+	ru/embox_execute_debug_ru.md \
 	ru/embox_hello_world_example_ru.md \
 	ru/embox_blinking_led_example_ru.md \
 	ru/embox_external_app_example_ru.md \
-	ru/embox_driver_example_ru.md \
 	-o embox_user_manual_ru.pdf
 
 quick_start_ru:
 	pandoc --template=embox_pandoc.latex \
-	ru/embox_quick_start_header_ru.md \
+	ru/headers/embox_quick_start_header_ru.md \
 	ru/embox_quick_overview_ru.md \
 	ru/embox_quick_start_ru.md \
 	-o embox_quick_start_ru.pdf
 
 quick_overview_ru:
 	pandoc --template=embox_pandoc.latex \
-	ru/embox_quick_overview_header_ru.md \
+	ru/headers/embox_quick_overview_header_ru.md \
 	ru/embox_quick_overview_ru.md \
 	-o embox_quick_overview_ru.pdf
 
