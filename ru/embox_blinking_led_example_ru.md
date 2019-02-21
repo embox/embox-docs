@@ -5,13 +5,15 @@
 
 Библиотека имеет следующий интерфейс:
 
-* int gpio_setup_mode(unsigned short port, gpio_mask_t pins, int mode) - функция задания режима работы вывода. Режин может быть одним из следующих:
+* int gpio_setup_mode(unsigned short port, gpio_mask_t pins, int mode) - функция задания режима работы вывода. Режим может быть одним из следующих:
 
+	Некоторые базовые режимы (см. <drivers/gpio/gpio.h>):
     * GPIO_MODE_OUTPUT - режим вывода
     * GPIO_MODE_INPUT - режим ввода
     * GPIO_MODE_INT_MODE_RISING - режим прерывания
+    * GPIO_MODE_ALTERNATE - режим Alternate. При этом номер функции может быть выставлен с помощью GPIO_ALTERNATE(num). То есть, в итоге режим будет вида GPIO_MODE_ALTERNATE | GPIO_ALTERNATE(num).
 * void gpio_set(unsigned short port, gpio_mask_t pins, char level) - установить значение на выходе. Режим вывода должен быть GPIO_MODE_OUTPUT.
-* void gpio_toggle(unsigned short port, gpio_mask_t pins) - инвертироваьт значение на выходе. Режим вывода должен быть GPIO_MODE_OUTPUT.
+* void gpio_toggle(unsigned short port, gpio_mask_t pins) - инвертировать значение на выходе. Режим вывода должен быть GPIO_MODE_OUTPUT.
 * gpio_mask_t gpio_get(unsigned short port, gpio_mask_t pins) - получить значение на входе. Результат представляется в виде маски. Режим вывода должен быть GPIO_MODE_INPUT.
 * int gpio_irq_attach(unsigned short port, gpio_mask_t pins, irq_handler_t pin_handler, void *data) - задание обработчика прерывания. Режим вывода должен быть GPIO_MODE_INT_MODE_RISING.
 
@@ -66,11 +68,13 @@ irq_return_t user_button_hnd(unsigned int irq_nr, void *data) {
 
 int main(int argc, char *argv[]) {
     gpio_setup_mode(GPIO_PORT_D, LED4_PIN, GPIO_MODE_OUTPUT);
-    gpio_setup_mode(GPIO_PORT_A, USER_BUTTON_PIN, GPIO_MODE_INT_MODE_RISING);
+    gpio_setup_mode(GPIO_PORT_A, USER_BUTTON_PIN,
+		GPIO_MODE_INT_MODE_RISING);
 
     gpio_set(GPIO_PORT_D, LED4_PIN, 0);
 
-    if (0 > gpio_irq_attach(GPIO_PORT_A, USER_BUTTON_PIN, user_button_hnd, NULL)) {
+    if (0 > gpio_irq_attach(GPIO_PORT_A, USER_BUTTON_PIN,
+			user_button_hnd, NULL)) {
         return -1;
     }
 
@@ -80,6 +84,4 @@ int main(int argc, char *argv[]) {
 }
 ```
 
-Отиличие от примера с простым мигание светодиодом заключается в использовании еще одного вывода, который переключен в режим прерывания с помощью функции gpio_setup_mode(). а с помощью функции gpio_irq_attach() на событие по изменению состояния на выводе подключенном к кнопке, повешен обработчик. В обработчике происходит инвертация значения на выходе светодиода.
-
-
+Отличие от примера с простым миганием светодиодом заключается в использовании еще одного вывода, который переключен в режим прерывания с помощью функции gpio_setup_mode(). А с помощью функции gpio_irq_attach() на событие по изменению состояния на выводе подключенном к кнопке, повешен обработчик. В обработчике происходит инвертирование значения на выходе светодиода.
