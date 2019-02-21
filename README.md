@@ -2,5 +2,10 @@
 
 You can use pandoc to compile to pdf format. For example:
 
-```pandoc embox_quick_start_ru.md -o embox_quick_start_ru.pdf```
+```
+    $ make ru
+    $ make en
+    $ make
+```
 
+It appears some pdf files in the project directory in the result.
