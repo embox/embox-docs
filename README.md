@@ -1,5 +1,10 @@
 # embox-docs - markdown documentations for Embox 
 
+For Arch Linux:
+```
+    $ sudo pacman -S pandoc texlive-langcyrillic texlive-latexextra
+```
+
 You can use pandoc to compile to pdf format. For example:
 
 ```
