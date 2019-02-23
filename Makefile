@@ -59,4 +59,5 @@ en: quick_overview_en quick_start_en user_manual_en
 
 ru: quick_overview_ru quick_start_ru user_manual_ru
 
-
+clean:
+	rm -f *.pdf
