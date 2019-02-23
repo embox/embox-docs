@@ -1,1 +1,6 @@
+# Vim temp files
+*.sw[a-z]
+.*.sw[a-z]
+*~
+
 *.pdf
