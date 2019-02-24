@@ -5,6 +5,11 @@ For Arch Linux:
     $ sudo pacman -S pandoc texlive-langcyrillic texlive-latexextra
 ```
 
+For Debian like:
+```
+    $ sudo apt-get install pandoc texlive-lang-cyrillic texlive-latex-extra lmodern cm-super
+```
+
 You can use pandoc to compile to pdf format. For example:
 
 ```
