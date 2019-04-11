@@ -7,6 +7,8 @@ user_manual_en:
 	en/embox_user_manual_header_en.md \
 	en/embox_quick_overview_en.md \
 	en/embox_quick_start_en.md \
+	en/drivers/embox_drivers_framebuffer_en.md \
+	en/drivers/embox_drivers_flash_en.md \
 	en/embox_user_manual_en.md \
 	-o embox_user_manual_en.pdf
 
@@ -41,6 +43,7 @@ user_manual_ru:
 	ru/drivers/embox_drivers_serials_ru.md \
 	ru/drivers/embox_drivers_ethernet_cards_ru.md \
 	ru/drivers/embox_drivers_framebuffers_ru.md \
+	ru/drivers/embox_drivers_flash_ru.md \
 	ru/drivers/embox_drivers_pci_ru.md \
 	ru/drivers/embox_drivers_devfs_ru.md \
 	ru/embox_build_ru.md \

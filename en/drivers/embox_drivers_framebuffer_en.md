@@ -1,8 +1,8 @@
-# Frame buffer
+#### Frame buffer
 
 This sections describes how to use graphical output to display
 
-## User API
+##### User API
 Header file: `#include <drivers/video/fb.h>`
 
 Basic usage:
@@ -31,7 +31,7 @@ Frame data is mapped as to address `fb->screen_base`.
 ((uint32_t *) fb->screen_base)[ j * fb->var.xres + i ] = 0xffffffff;
 ```
 
-### Converting from one format to another
+###### Converting from one format to another
 
 Currently supported formats are:
 
@@ -65,7 +65,7 @@ extern int pix_fmt_convert(void *src, void *dst, int n,
 		enum pix_fmt in, enum pix_fmt out);
 ```
 
-## Examples
+##### Examples
 
 * Basic example of direct access to frame buffer
  `src/cmds/testing/fb_direct_access/fb_direct_access.c`
@@ -73,7 +73,7 @@ extern int pix_fmt_convert(void *src, void *dst, int n,
 * Simple OpenGL scene
  `platform/mesa/cmds/osdemo_fb/osdemo_fb.c`
 
-## Driver API
+##### Driver API
 
 There are two essential functions to implement in video driver for a new platform `fb_set_var` and `fb_get_var`.
 In the trivial case they can be empty:
@@ -106,7 +106,7 @@ struct fb_info *new_fb = fb_create(&example_ops, screen_base, screen_size /* in 
 
 After that applications can obtain this framebuffer with `fb_lookup()`.
 
-## Supported controllers
+##### Supported controllers
 * STM32F7Discovery
 * i.MX6 LVDS
 * EFM32 LCD display
@@ -114,9 +114,9 @@ After that applications can obtain this framebuffer with `fb_lookup()`.
 * BOCHS
 * Cirrus
 
-# Flash devices
+#### Flash devices
 
-## User API
+##### User API
 Header file: `#include <drivers/flash/flash.h>`
 
 Userspace functions to work with flash device:
@@ -152,7 +152,7 @@ ioctl(fd, GET_CONFIG_FLASH_ERASE, &arg);
 
 For more details for ioctl calls refer to `src/drivers/flash/flash.h`.
 
-## Driver API
+##### Driver API
 
 Two things should be done to implement another flash device driver:
 
@@ -175,7 +175,7 @@ struct flash_dev_drv {
 
 Example flash driver implementation: `src/drivers/flash/emulator/emulator.c'
 
-## Supported controllers
+##### Supported controllers
 * STM32F3Discovery
 * STM32F4Discovery
 * Software emulator
