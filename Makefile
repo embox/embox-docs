@@ -51,6 +51,7 @@ user_manual_ru:
 	ru/embox_hello_world_example_ru.md \
 	ru/embox_blinking_led_example_ru.md \
 	ru/embox_external_app_example_ru.md \
+	ru/embox_cxx_support_ru.md \
 	-o embox_user_manual_ru.pdf
 
 quick_start_ru:
