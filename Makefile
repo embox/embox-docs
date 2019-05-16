@@ -4,9 +4,14 @@ all: ru en
 
 user_manual_en:
 	pandoc --template=embox_pandoc.latex \
-	en/embox_user_manual_header_en.md \
+	en/headers/embox_user_manual_header_en.md \
 	en/embox_quick_overview_en.md \
 	en/embox_quick_start_en.md \
+	en/embox_supported_platforms_en.md \
+	en/embox_supported_platforms_qemu_en.md \
+	en/embox_supported_platforms_x86_en.md \
+	en/embox_supported_platforms_arm_en.md \
+	en/drivers/embox_drivers_en.md \
 	en/drivers/embox_drivers_framebuffer_en.md \
 	en/drivers/embox_drivers_flash_en.md \
 	en/embox_user_manual_en.md \
@@ -14,14 +19,14 @@ user_manual_en:
 
 quick_start_en:
 	pandoc --template=embox_pandoc.latex \
-	en/embox_quick_start_header_en.md \
+	en/headers/embox_quick_start_header_en.md \
 	en/embox_quick_overview_en.md \
 	en/embox_quick_start_en.md \
 	-o embox_quick_start_en.pdf
 
 quick_overview_en:
 	pandoc --template=embox_pandoc.latex \
-	en/embox_quick_overview_header_en.md \
+	en/headers/embox_quick_overview_header_en.md \
 	en/embox_quick_overview_en.md \
 	-o embox_quick_overview_en.pdf
 

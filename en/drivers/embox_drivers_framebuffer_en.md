@@ -1,8 +1,8 @@
-#### Frame buffer
+### Frame buffer
 
 This sections describes how to use graphical output to display
 
-##### User API
+#### User API
 Header file: `#include <drivers/video/fb.h>`
 
 Basic usage:
@@ -31,7 +31,7 @@ Frame data is mapped as to address `fb->screen_base`.
 ((uint32_t *) fb->screen_base)[ j * fb->var.xres + i ] = 0xffffffff;
 ```
 
-###### Converting from one format to another
+##### Converting from one format to another
 
 Currently supported formats are:
 
@@ -65,7 +65,7 @@ extern int pix_fmt_convert(void *src, void *dst, int n,
 		enum pix_fmt in, enum pix_fmt out);
 ```
 
-##### Examples
+#### Examples
 
 * Basic example of direct access to frame buffer
  `src/cmds/testing/fb_direct_access/fb_direct_access.c`
@@ -73,7 +73,7 @@ extern int pix_fmt_convert(void *src, void *dst, int n,
 * Simple OpenGL scene
  `platform/mesa/cmds/osdemo_fb/osdemo_fb.c`
 
-##### Driver API
+#### Driver API
 
 There are two essential functions to implement in video driver for a new platform `fb_set_var` and `fb_get_var`.
 In the trivial case they can be empty:
@@ -106,7 +106,7 @@ struct fb_info *new_fb = fb_create(&example_ops, screen_base, screen_size /* in 
 
 After that applications can obtain this framebuffer with `fb_lookup()`.
 
-##### Supported controllers
+#### Supported controllers
 * STM32F7Discovery
 * i.MX6 LVDS
 * EFM32 LCD display
@@ -114,68 +114,3 @@ After that applications can obtain this framebuffer with `fb_lookup()`.
 * BOCHS
 * Cirrus
 
-#### Flash devices
-
-##### User API
-Header file: `#include <drivers/flash/flash.h>`
-
-Userspace functions to work with flash device:
-```
-/* If your configuration has single flash device,
- * probably it's ID is zero */
-extern struct flash_dev *flash_by_id(int idx);
-
-extern int flash_read(struct flash_dev *flashdev, unsigned long offset,
-		void *buf, size_t len);
-extern int flash_write(struct flash_dev *flashdev, unsigned long offset,
-		const void *buf, size_t len);
-extern int flash_erase(struct flash_dev *flashdev, uint32_t block);
-extern int flash_copy(struct flash_dev *flashdev, uint32_t to,
-		uint32_t from, size_t len);
-```
-
-It's also possible to access flash devices via devfs with POSIX or LibC calls
-(`open`, `read` work like for regular block device, to erause block you can use
-`ioctl`)
-
-```
-
-int fd = open("/dev/stm32_flash", O_RDWR);
-
-flash_getconfig_erase_t arg = {
-	.offset = 0xbeef0000,
-	.len    = 0x1000
-};
-
-ioctl(fd, GET_CONFIG_FLASH_ERASE, &arg);
-```
-
-For more details for ioctl calls refer to `src/drivers/flash/flash.h`.
-
-##### Driver API
-
-Two things should be done to implement another flash device driver:
-
-* Implement flash operations for `struct flash_dev_drv`
-* Create flash device with `flash_create()`
-
-```
-struct flash_dev_drv {
-	int	(*flash_init) (void *arg);
-	size_t	(*flash_query) (struct flash_dev *dev, void * data, size_t len);
-	int	(*flash_erase_block) (struct flash_dev *dev, uint32_t block_base);
-	int	(*flash_program) (struct flash_dev *dev, uint32_t base,
-				  const void* data, size_t len);
-	int	(*flash_read) (struct flash_dev *dev, uint32_t base,
-			       void* data, size_t len);
-	int	(*flash_copy) (struct flash_dev *dev,
-			       uint32_t base_to, uint32_t base_from, size_t len);
-};
-```
-
-Example flash driver implementation: `src/drivers/flash/emulator/emulator.c'
-
-##### Supported controllers
-* STM32F3Discovery
-* STM32F4Discovery
-* Software emulator
