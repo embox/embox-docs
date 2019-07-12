@@ -1,4 +1,4 @@
-# embox-docs - markdown documentations for Embox 
+# embox-docs - markdown documentation for Embox 
 
 For Arch Linux:
 ```
