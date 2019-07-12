@@ -84,7 +84,7 @@ You can use already ready-to-use archives from [https://github.com/embox/crossto
 ```
     $ ./crosstool.sh ARCH
 ```
-As the result ***ARCH-elf-toolchain.tar.bz2*** archive will be created. Than you need to extract files from the archive and set up 'PATH' enviroment variable.
+As the result ***ARCH-elf-toolchain.tar.bz2*** archive will be created. Than you need to extract files from the archive and set up `PATH` enviroment variable.
 
 ## QEMU installation
 Supported CPU architectures: x86, ARM, MIPS, Sparc, PPC, Microblaze.
@@ -136,7 +136,7 @@ Embox kernel start
 If all unit tests passed successfully and all modules loaded, then command prompt will appear.
 Now you can execute commands included in the configuration (`mods.conf`). You can start with ***help*** command which prints list of available commands.
 
-Press ***ctrl+’A’*** and then '***x***' to exit from Qemu.
+Press ***ctrl+’A’*** and then `***x***` to exit from Qemu.
 
 ## Preliminaries to Mybuild build system
 Embox is modular and configurable. Declarative program language Mybuild has been developed for these features. Mybuild allows to describe both single modules and whole target system.

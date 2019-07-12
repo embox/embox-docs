@@ -58,7 +58,7 @@ struct flash_dev_drv {
 };
 ```
 
-Example flash driver implementation: `src/drivers/flash/emulator/emulator.c'
+Example flash driver implementation: `src/drivers/flash/emulator/emulator.c`
 
 #### Supported controllers
 * STM32F3Discovery

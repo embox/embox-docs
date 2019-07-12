@@ -16,10 +16,10 @@ For each of supported CPU architectures you have to configure Embox by follow sh
 ```
 where <ARCH>: x86, arm, mips, ppc, microblaze, sparc
 
-For running you should execute 'auto_qemu' script:
+For running you should execute `auto_qemu` script:
 ```
         $ ./scripts/qemu/auto_qemu
 ```
-The script parses config files from 'conf/' folder and starts 'qemu' with corresponded arguments.
+The script parses config files from `conf/` folder and starts `qemu` with corresponded arguments.
 
 
