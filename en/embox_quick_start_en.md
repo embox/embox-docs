@@ -240,3 +240,19 @@ Let's look at the Mybuild file from "Hello world" example in more details:
 
 The first line contains package name ***embox.cmd***. In Embox all modules are organized into packages.
 Full module name consist of the corresponding package name appended with module name. Module name is defined in string ***module hello_world***.
+
+### Debugging
+You can use the same script with *-s -S -no-kvm* flags for debugging:
+```
+$ sudo ./scripts/qemu/auto_qemu -s -S -no-kvm
+```
+After running that QEMU waits for a connection from a gdb-client. Run gdb in the other terminal:
+```
+$ gdb ./build/base/bin/embox
+...
+(gdb) target extended-remote :1234
+(gdb) continue
+```
+The system starts to load.
+
+At any moment in gdb terminal you can type <kbd>ctrl + C</kbd> and see the stack of the current thread (`backtrace`) or set breakpoints (`break <function name>`, `break <file name>:<line number>`).
