@@ -1,4 +1,3 @@
-
 ### Flash devices
 
 #### User API

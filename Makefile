@@ -14,6 +14,8 @@ user_manual_en:
 	en/drivers/embox_drivers_en.md \
 	en/drivers/embox_drivers_framebuffer_en.md \
 	en/drivers/embox_drivers_flash_en.md \
+	en/drivers/embox_drivers_gpio_en.md \
+	en/drivers/embox_drivers_i2c_en.md \
 	en/embox_user_manual_en.md \
 	-o embox_user_manual_en.pdf
 
