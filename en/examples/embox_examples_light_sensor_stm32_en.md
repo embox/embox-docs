@@ -11,7 +11,7 @@ Here will show how to use this sensor with STM32F4-Discovery board.
 
    * Add I2C1 bus to which sensor will be connected: `include embox.driver.i2c.stm32_i2c1`
 
-   * Finally, add gy_30 command to access gy-30: `include embox.cmd.sensors.gy_30`
+   * Finally, add `gy_30` command to access gy-30: `include embox.cmd.sensors.gy_30`
 
 * Build and flash Embox, then connect with minicom. Refer to our [guide](https://github.com/embox/embox/wiki/STM32F4DISCOVERY) again.
 * Connect the sensor sensor to I2C1 bus (GND, VCC, SCL, SDA). You can find corresponding pins in the config file `src/drivers/i2c/adapters/stm32/i2c_conf_f4.h`
