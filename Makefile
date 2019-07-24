@@ -21,7 +21,7 @@ user_manual_en:
 	en/examples/embox_examples_opencv_stm32_en.md \
 	en/examples/embox_examples_pjsip_stm32_en.md \
 	en/examples/embox_examples_qt_stm32_en.md \
-	en/libs/embox_libs_fps_en.md \
+	en/libs/embox_lib_fps_en.md \
 	en/embox_user_manual_en.md \
 	-o embox_user_manual_en.pdf
 
