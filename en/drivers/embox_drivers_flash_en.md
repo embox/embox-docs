@@ -4,6 +4,7 @@
 Header file: `#include <drivers/flash/flash.h>`
 
 Userspace functions to work with flash device:
+
 ```
 /* If your configuration has single flash device,
  * probably it's ID is zero */
@@ -63,3 +64,4 @@ Example flash driver implementation: `src/drivers/flash/emulator/emulator.c`
 * STM32F3Discovery
 * STM32F4Discovery
 * Software emulator
+

@@ -6,11 +6,13 @@ This sections describes how to use graphical output to display
 Header file: `#include <drivers/video/fb.h>`
 
 Basic usage:
-```
+
+```c
 struct fb_info *fb = fb_lookup(0); /* If your config has single display, then lookup fb with id=0 */
 ```
 Screen resolution and other info can be obtained from `fb->var`:
-```
+
+```c
 struct fb_var_screeninfo {
 	uint32_t xres;
 	uint32_t yres;
@@ -26,7 +28,7 @@ struct fb_var_screeninfo *var = &fb->var;
 
 Frame data is mapped as to address `fb->screen_base`.
 
-```
+```c
 /* Write white pixel with coords (i, j), assume format is 32-bit RGB */
 ((uint32_t *) fb->screen_base)[ j * fb->var.xres + i ] = 0xffffffff;
 ```
@@ -53,7 +55,7 @@ RGB888 and BGR888 are interpreted as 4-byte values, but last byte is ignored.
 
 Following functions can be used to work with pixel formats
 
-```
+```c
 extern int pix_fmt_has_alpha(enum pix_fmt fmt);
 extern int pix_fmt_bpp(enum pix_fmt fmt);
 extern int pix_fmt_chan_bits(enum pix_fmt fmt, enum pix_chan chan);
@@ -79,7 +81,7 @@ There are two essential functions to implement in video driver for a new platfor
 In the trivial case they can be empty:
 
 
-```
+```c
 static int example_set_var(struct fb_info *info,
 		struct fb_var_screeninfo const *var) {
 	printf("This function should set resolution to %d x %d\n",
@@ -100,7 +102,8 @@ static struct fb_ops example_fb_ops = {
 ```
 
 Finally, framebuffer is created by following call:
-```
+
+```c
 struct fb_info *new_fb = fb_create(&example_ops, screen_base, screen_size /* in bytes */);
 ```
 

@@ -9,6 +9,7 @@ Demo video  is [here](https://www.youtube.com/watch?v=W6wuEIZJf8o).
 1. Configure Embox with `make confload-platform/pjsip/stm32f7cube`.
 
 2. Edit configuration file `conf/mods.config` and type the following:
+
 ```
 include platform.pjsip.cmd.simple_pjsua_imported(
     sip_domain="server",
@@ -21,6 +22,7 @@ where `server` is SIP server address (e.g. `sip.linphone.org`), `username` and `
 3. Build Embox with `make` and load into STM32F7-Discovery. You can see how to load Embox into STM32 board [here](https://github.com/embox/embox/wiki/Running-Embox-on-STM32xxDiscovery).
 
 4. In Embox type "simple_pjsua_imported". After command execution, you will see something the following:
+
 ```
 00:00:12.870    pjsua_acc.c  ....SIP outbound status for acc 0 is not active
 00:00:12.884    pjsua_acc.c  ....sip:alexk2222@sip.linphone.org: registration success, status=200 (Registration succes
@@ -31,6 +33,7 @@ where `server` is SIP server address (e.g. `sip.linphone.org`), `username` and `
 Insert speakers to CN10 out and speak to the MEMS microphones (Micro Left and Micro Right located beside the display).
 
    For example, to make a call from to some linphone account do:
+
    ```
     embox>simple_pjsua_imported sip:some_account@sip.linphone.org
    ```
@@ -46,12 +49,16 @@ If you are using linphone, probably you will need some of the following things:
 
 1. `make confload-platform/pjsip/stm32f7cube && make -j4`
 2. In Embox type the following to record your voice:
+
 ```
 record -r 16000 -c 2 -d 10000 -m C0000000
 ```
+
 This command will create stereo 16000 Hz WAV with 10 s duration.
 
 Play this WAV with:
+
 ```
 play -m C0000000
 ```
+

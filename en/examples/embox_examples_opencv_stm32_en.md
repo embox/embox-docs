@@ -46,3 +46,4 @@ Brief instruction:
 5. Run `edges 20` on Embox console
 
 ![](https://raw.githubusercontent.com/wiki/embox/embox/images/platforms/stm32f7-opencv.jpg)
+

@@ -62,7 +62,8 @@ File `drivers/gpio/gpio.h`:
 #### Examples
 
 * Toggle LED with button on STM32F4-Discovery
-```
+
+```c
 #include <unistd.h>
 #include <kernel/irq.h>
 #include <drivers/gpio/gpio.h>
@@ -96,7 +97,7 @@ File `drivers/gpio/gpio_driver.h`:
 
 Each GPIO driver should define structure:
 
-```
+```c
 struct gpio_chip {
     int (*setup_mode)(unsigned char port, gpio_mask_t pins, int mode);
     void (*set)(unsigned char port, gpio_mask_t pins, char level);
@@ -126,3 +127,4 @@ Fields description:
 * [[i.MX6]]
 * Qemu ARM OMAP3 Overo
 * [Bifferboard](https://github.com/embox/embox/wiki/Platform-Bifferboard)
+

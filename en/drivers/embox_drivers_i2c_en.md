@@ -36,3 +36,4 @@ To add I2C support for a new platform you have to add `struct i2c_adapter` and p
 
 * [[STM32 MCU Eval Tools]]
 * [[i.MX6]]
+

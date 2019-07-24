@@ -1,3 +1,4 @@
+# GY 30 I2C light sensor on STM32
 [GY-30](https://einstronic.com/store/sensor/light/gy-30-bh1750-ambient-light-sensor-breakout-board-module/) is light intensity sensor which you can connect through I2C to your board.
 
 <img src="https://einstronic.com/wp-content/uploads/2018/06/GY-30-BH1750-Ambient-Light-Sensor-Module-1.jpg" width="320" height="240" align="right">

@@ -34,3 +34,4 @@ Get Embox ELF without Qt sections:
 3. Now load `qt.bin` to QSPI memory. Refer to this [guide](https://github.com/embox/embox/wiki/STM32F7DISCOVERY#loading-files-to-qspi) for more details. Exit after qt.bin will be loaded to QSPI.
 
 4. Now load and start embox_qt. Refer to this [guide](https://github.com/embox/embox/wiki/How-to-flash-and-run-STM32-boards) for more details.
+
