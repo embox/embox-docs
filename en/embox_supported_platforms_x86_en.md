@@ -1,8 +1,8 @@
 ## x86
 
-Embox supported 32 bits x86 and some of peripheral drivers. gcc is used ass cross-compiler on Linux.
+Embox supports 32-bit x86 and some of peripheral drivers. gcc is used as cross-compiler on Linux.
 
-Embox supported:
+Embox supports:
 
 * qemu-system-i386
 * Load with GRUB

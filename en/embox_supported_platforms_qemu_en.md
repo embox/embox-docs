@@ -1,6 +1,6 @@
-## Support QEMU emulator
+## QEMU emulator support
 
-Embox supported follow QEMUs:
+Embox supports following QEMUs:
 
 * qemu-system-i386
 * qemu-system-arm
