@@ -11,7 +11,7 @@ This board has enough flash memory for OpenCV, so it's pretty easy to run a simp
 
 1. Compile this template (it requires a few minutes as it builds libstdc++ and opencv from source)
 ```
- 	make confload-platform/opencv/stm32f769idiscovery
+ 	make confload-platform/opencv/stm32f769i-discovery
  	make
 ```
 
@@ -28,7 +28,7 @@ Brief instruction:
 
 1. Compile this template:
 ```
- 	make confload-platform/opencv/stm32f7discovery
+ 	make confload-platform/opencv/stm32f764g-discovery
  	make
 ```
 2. Extract readonly sections from ELF
