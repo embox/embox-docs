@@ -8,7 +8,7 @@ Demo video  is [here](https://www.youtube.com/watch?v=W6wuEIZJf8o).
 
 1. Configure Embox with `make confload-platform/pjsip/stm32f7cube`.
 
-2. Edit configuration file `conf/mods.config` and type the following:
+2. Edit configuration file `conf/mods.conf` and type the following:
 
 ```
 include platform.pjsip.cmd.simple_pjsua_imported(

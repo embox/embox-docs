@@ -6,7 +6,7 @@
 Here will show how to use this sensor with STM32F4-Discovery board.
 
 * Configure `arm/stm32f4cube` template. Refer to our [guide](https://github.com/embox/embox/wiki/STM32F4DISCOVERY).
-* Now edit conf/mods.config:
+* Now edit conf/mods.conf:
 
    * Add I2C driver: `include embox.driver.i2c.stm32_i2c_f4`
 
