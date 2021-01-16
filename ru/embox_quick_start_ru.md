@@ -191,7 +191,7 @@ Embox kernel start
         package embox.cmd
 
         @AutoCmd
-        @Cmd(name = "hello_world", help=”First Embox application”)
+        @Cmd(name = "hello_world", help="First Embox application")
         module hello_world {
         	source "hello_world.c"
         }
