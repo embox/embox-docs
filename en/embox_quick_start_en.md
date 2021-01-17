@@ -114,7 +114,7 @@ Build Embox:
 ```
     $ make
 ```
-or for parallel building:
+or for parallel building with N parallel jobs:
 ```
     $ make -jN
 ```
@@ -232,7 +232,7 @@ Let's look at the Mybuild file from "Hello world" example in more details:
      package embox.cmd
 
      @AutoCmd
-     @Cmd(name = "hello_world", help=”First Embox application”)
+     @Cmd(name = "hello_world", help="First Embox application")
      module hello_world {
      	source "hello_world.c"
      }
