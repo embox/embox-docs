@@ -241,7 +241,7 @@ Let's look at the Mybuild file from "Hello world" example in more details:
 The first line contains package name ***embox.cmd***. In Embox all modules are organized into packages.
 Full module name consist of the corresponding package name appended with module name. Module name is defined in string ***module hello_world***.
 
-### Debugging
+## Debugging
 You can use the same script with *-s -S -no-kvm* flags for debugging:
 ```
 $ sudo ./scripts/qemu/auto_qemu -s -S -no-kvm

@@ -2,7 +2,7 @@
 # Quick Overview
 Embox is a real-time operating system for embedded systems.
 
-Embox is a cross-platform operating system. All arch-dependent code is organized as separate modules. It makes porting process to a new platform easy. Currently, Embox supports following architectures: ARM, x86, SPARC, Microblaze, MIPS, PPC, E2k.
+Embox is a cross-platform operating system. All arch-dependent code is organized as separate modules. It makes porting process to a new platform easy. Currently, Embox supports following architectures: ***ARM, x86, RISC_V, SPARC, Microblaze, MIPS, PPC, E2k***.
 
 Embox is a multitasking operating system and supports different priority levels, preemptive and cooperative multitasking, priority inheritance and different synchronization primitives.
 

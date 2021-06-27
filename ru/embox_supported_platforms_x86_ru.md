@@ -4,7 +4,7 @@ Embox поддерживает 32 разрядную архитектуры x86 
 
 Embox поддерживает:
 
-* qemu-system-i386
-* Загрузка через GRUB
-* BifferBoard
+ * qemu-system-i386
+ * Загрузка через GRUB
+ * BifferBoard
 
