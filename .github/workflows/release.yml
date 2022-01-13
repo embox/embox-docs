@@ -1,0 +1,30 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  release:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install build packages
+        run: sudo apt-get install -y pandoc texlive-lang-cyrillic texlive-latex-extra lmodern cm-super
+  
+      - name: Make pdf
+        run: |
+          make ru
+          make en
+          make
+
+      - name: GitHub Release creation
+        uses: anton-yurchenko/git-release@main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          UNRELEASED: "update"
+        with:
+          args: ./*.pdf
