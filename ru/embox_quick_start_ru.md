@@ -36,7 +36,7 @@
     wsl -l -v
 ```
 Выполните в командной строке Ubuntu следующие команды для установки необходимых для запуска программ:
-``` 
+```
     sudo apt-get update
     sudo apt-get install unzip
     sudo apt-get install make
