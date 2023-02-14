@@ -8,36 +8,66 @@
 ```
 Либо скачиваем архивом из [https://github.com/embox/embox/releases](https://github.com/embox/embox/releases)
  
-## Работа в Windows  и MacOS
-Все описания сделаны для Linux. Для сборки и работы под Windows и MacOS лучше использовать Docker в котором уже настроено все необходимое окружение для начальной работы.
-Для этого:
+## Запуск в Windows  и MacOS
 
- * Установите docker для вашей ОС.
- * Убедитесь, что docker установлен правильно с помощью команд:
-```
-        $ docker-machine ls
-        $ docker-machine start default
-```
- * Перейдите в консоли в корневую папку с исходниками Embox.
- * Запустите докер выполнив скрипт
-```
-        $ ./scripts/docker/docker_start.sh
-```
- * Для упрощения работы выполните скрипт командой
-```
-        $. ./scripts/docker/docker_rc.sh
-```
-   Данный скрипт позволит писать команду `dr` вместо `docker run`
+### Выполните следующие шаги:
 
-Далее перед каждой командой необходимо вставлять `dr`. Например,
-```
-    $ dr make confload-x86/qemu
-    $ dr make
-    $ dr ./scripts/qemu/auto_qemu
-```
-Для конфигурации сборки и запуска базового темплейта.
+Скачайте актуальную версию PowerShell
 
-После установки и проверки работоспособности, можно пропустить раздел настройка окружения и перейти сразу к разделу “Сборка и запуск на QEMU”
+[Алгоритм скачивания PowerShell для Windows](https://learn.microsoft.com/ru-ru/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.3)
+
+
+Зайдите в PowerShell под именем администратора и установите WSL2 (обратите внимание на требования к версии Windows)
+
+   [Алгоритм установки WSL2 ссылка 1](https://translated.turbopages.org/proxy-u/en-ru.ru.9a3d8a89-63e3977f-cd8a2912-74722d776562/https/github.com/MicrosoftDocs/WSL/blob/main/WSL/install-manual.md)
+   [Алгоритм установки WSL2 ссылка 2](https://learn.microsoft.com/ru-ru/windows/wsl/install-manual)
+
+
+```
+Перед тем как перейти к следующему шагу обязательно обновите WSL1 до WSL2
+(инструкция по ссылкам выше), в противном случае Embox не запустится под Windows
+```
+
+Скачайте Ubuntu из Microsoft Store
+
+
+Убедитесь, что у Вас стоит WSL версии 2, для этого введите в PowerShell команду:
+```
+    wsl -l -v
+```
+Выполните в командной строке Ubuntu следующие команды для установки необходимых для запуска программ:
+``` 
+    sudo apt-get update
+    sudo apt-get install unzip
+    sudo apt-get install make
+    sudo apt-get install gcc
+    sudo apt-get install gcc-10-multilib
+    sudo apt-get install qemu-system-x86
+    sudo apt-get install python3
+    sudo apt-get install python-is-python3
+```
+
+Клонируйте себе версию проекта
+
+   git clone <https://github.com/embox/embox>
+
+ 
+Зайдите в папку проекта
+```
+    cd embox
+```
+Выполните 3 команды
+```
+    make confload-x86/qemu
+    make
+    ./scripts/qemu/auto_qemu
+```
+П. С.: Если у вас возникли трудности с запуском Embox на Windows -- проверьте на корректность введённые команды.
+Если команды написаны корректно-- Вы можете воспользоваться рекомендациями из статьи по ссылке:
+
+   [Устранение неполадок WSL](https://learn.microsoft.com/ru-ru/windows/wsl/troubleshooting)
+  
+
 
 ## Настройка окружения
 Необходимые пакеты: make, gcc (кросс-компилятор под выбранную архитектуру,  см. “Установка кросс-компилятора”).
