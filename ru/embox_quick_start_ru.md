@@ -19,8 +19,7 @@
 
 Зайдите в PowerShell под именем администратора и установите WSL2 (обратите внимание на требования к версии Windows)
 
-   [Алгоритм установки WSL2 ссылка 1](https://translated.turbopages.org/proxy-u/en-ru.ru.9a3d8a89-63e3977f-cd8a2912-74722d776562/https/github.com/MicrosoftDocs/WSL/blob/main/WSL/install-manual.md)
-   [Алгоритм установки WSL2 ссылка 2](https://learn.microsoft.com/ru-ru/windows/wsl/install-manual)
+   [Алгоритм установки WSL2](https://learn.microsoft.com/ru-ru/windows/wsl/install-manual)
 
 
 ```
@@ -47,9 +46,10 @@
     sudo apt-get install python-is-python3
 ```
 
-Клонируйте себе версию проекта
+Клонируйте себе версию проекта(используйте https или ssh)
 
-   git clone <https://github.com/embox/embox>
+   git clone <https://github.com/embox/embox.git>
+   git clone <git@github.com:embox/embox.com>
 
  
 Зайдите в папку проекта
