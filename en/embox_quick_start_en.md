@@ -10,34 +10,59 @@ Clone git repository:
 Or download as an archive [https://github.com/embox/embox/releases](https://github.com/embox/embox/releases)
 
 ## Work on Windows or MacOS
-The main Embox development platform is Linux, so all descriptions below are given for Linux. If you are using Windows or MacOS, it’s better to use Docker with already installed environment for starting. You can start using our Docker (emdocker) in the following way:
+### Please follow the next recomendations:
 
- * Install docker for your OS.
- * Make sure docker was installed correctly:
-```
-    $ docker-machine ls
-    $ docker-machine start default
-```
- * Go to Embox root folder.
- * Launch docker:
-```
-    $ ./scripts/docker/docker_start.sh
-```
- * Source the script:
-```
-    $ . ./scripts/docker/docker_rc.sh
-```
-to simplify further work. Roughly speaking, this script mainly creates an alias between `dr` and `docker run`.
+Download an actual version of PowerShell
 
-And than you should prepend every command with `dr` to execute it inside the docker container. For example:
-```
-    $ dr make confload-x86/qemu
-    $ dr make
-    $ dr ./scripts/qemu/auto_qemu
-```
-to configure and build default template for x86.
+   [How to download PowerShell](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.3)
 
-After docker installation you can skip the section "Environment Settings" below and go directly to the section “Build and run on QEMU”.
+Open PowerShell as an administrator and install WSL2 (please pay your attention to the demands on Windows version)
+
+   [How to install WSL2](https://learn.microsoft.com/en-us/windows/wsl/install-manual)
+
+```
+Before the next step upgrade WSL1 to WSL2 if you did'nt do this(the instruction is in a link above).In other way Embox won't run on Windows
+```
+
+Download Ubuntu from Microsoft Store
+
+Check yout version of WSL the next way: insert the command below in PowerShell:
+```
+    wsl -l -v
+```
+Run the commands below in command line of Ubuntu for installing necessary programs:
+
+```
+    sudo apt-get update
+    sudo apt-get install unzip
+    sudo apt-get install make
+    sudo apt-get install gcc
+    sudo apt-get install gcc-10-multilib
+    sudo apt-get install qemu-system-x86
+    sudo apt-get install python3
+    sudo apt-get install python-is-python3
+```
+Clone version of embox to yourself(use https or ssh)
+
+   git clone <https://github.com/embox/embox.git>
+   git clone <git@github.com:embox/embox.git>
+
+Open the directory of the embox project
+```
+   cd embox
+```
+Run the next three commands
+```
+    make confload-x86/qemu
+    make
+    ./scripts/qemu/auto_qemu
+```
+P.S.: If you have problems with running Embox on Windows -- please check a correctness of the inserted commands.
+If it's correct -- you can use the recommendations from the article(link is below):
+
+   [How to solve problems with WSL](https://learn.microsoft.com/en-us/windows/wsl/troubleshooting)
+
+
 
 ## Enviroment Settings
 Minimal required packages: *make*, *gcc*, (cross-compiler for target platform. see "Cross-compiler installation").
