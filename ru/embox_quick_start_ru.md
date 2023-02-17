@@ -8,7 +8,7 @@
 ```
 Либо скачиваем архивом из [https://github.com/embox/embox/releases](https://github.com/embox/embox/releases)
  
-## Запуск в Windows  и MacOS
+## Запуск в Windows (и MacOS)
 
 ### Выполните следующие шаги:
 
@@ -19,7 +19,7 @@
 
 Зайдите в PowerShell под именем администратора и установите WSL2 (обратите внимание на требования к версии Windows)
 
-   [Алгоритм установки WSL2](https://learn.microsoft.com/ru-ru/windows/wsl/install-manual)
+[Алгоритм установки WSL2](https://learn.microsoft.com/ru-ru/windows/wsl/install-manual)
 
 
 ```
@@ -65,8 +65,8 @@
 П. С.: Если у вас возникли трудности с запуском Embox на Windows -- проверьте на корректность введённые команды.
 Если команды написаны корректно-- Вы можете воспользоваться рекомендациями из статьи по ссылке:
 
-   [Устранение неполадок WSL](https://learn.microsoft.com/ru-ru/windows/wsl/troubleshooting)
-  
+[Устранение неполадок WSL](https://learn.microsoft.com/ru-ru/windows/wsl/troubleshooting)
+
 
 
 ## Настройка окружения
