@@ -53,6 +53,7 @@ user_manual_ru:
 	ru/drivers/embox_drivers_interrupt_controllers_ru.md \
 	ru/drivers/embox_drivers_timers_ru.md \
 	ru/drivers/embox_drivers_serials_ru.md \
+	ru/drivers/embox_drivers_input_ru.md \
 	ru/drivers/embox_drivers_ethernet_cards_ru.md \
 	ru/drivers/embox_drivers_framebuffers_ru.md \
 	ru/drivers/embox_drivers_flash_ru.md \
