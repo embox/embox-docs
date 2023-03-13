@@ -3,10 +3,10 @@
 ## Project configuration
 Configuration is the list of modules and their parameters on the one side, and set of requirements to system functionality on the other. Check the "Modular structure of Embox" section for more details. The current configuration is in the files of "conf/" directory.
 
-## Выбор конфигурации
-Чтобы задать конфигурацию с нужными Вам свойствами, необходимо прописать эти свойства в папке «сonf/». Если подобное описание уже существует, то Вам будет проще использовать его в качестве основы для создания собственной конфигурации.
+## Choice of configuration
+To set the configuration with desired properties, it's necessary to describe these properties in the "conf/" directory. But if the similar configuration is already exists, it'll be easy for you to use the existing description as a base for making your own configuration.
 
-Посмотреть существующие конфигурации можно с помощью команды:
+You can see the existing configuration, using the next command:
 ```
     $ make confload
 ```
