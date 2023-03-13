@@ -10,13 +10,13 @@ You can see the existing configuration, using the next command:
 ```
     $ make confload
 ```
-Затем можно загрузить выбранную конфигурацию:
+After it's possible to load the chosen configuration the next way:
 ```
     $ make confload-<template>
 ```
-Обратите внимание: после выполнения команды «make confload-<template>» в Вашей папке «сonf/» появятся файлы выбранной Вами конфигурации. Файлы, находящиеся ранее в папке «сonf/» будут удалены.
+To pay attention: after using the "make confload-" command, your "conf/" directory will get files of chosen configuration. And files, that were in this directory before will be deleted.
 
-Пример:
+For example:
 ```
     $ make confload
     List of available templates:
@@ -27,7 +27,7 @@ You can see the existing configuration, using the next command:
 
     $ make confload-platform/quake3/qemu
 ```
-в данном примере мы выбрали имеющуюся в списке конфигурацию "platform/quake3/qemu".
+In the example above we choose the existing "platform/quake3/qemu" configuration from the list.
 
 ## Сборка из имеющейся конфигурации
 Для сборки образа необходимо установить выбранную конфигурацию в качестве текущей, как описано в предыдущем примере. А затем выполнить команду: 
