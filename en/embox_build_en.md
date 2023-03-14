@@ -46,17 +46,17 @@ For instance:
 ## Changing the characteristics of the system
 Using the "conf/" file you can change the configuration after making modifications. We remind you: if to run "make confload-" or make cleaning, that connected with current configuration (e. g. "make distclean"), current changes will be lost.
 
-### Изменение функциональности системы
-#### Изменение списка модулей
-Функциональность системы описывается в файле «mods.сonf», поэтому Вам стоит работать с этим файлом, если Вы хотите изменить функционал. Например, для включения новой команды в список нужно добавить в «mods.сonf» следующую строчку:
+### Changing the functionality of the system
+#### Modification of the modules list
+"Mods.conf" file has the description of system functionality, so you should use this file if you want to change functionality. For instance, to add a new command to the list, it's necessary to insert to "mods.conf" file the next line:
 ```
     include <PACKAGE_NAME>.<MODULE_NAME>
 ```
-Например:
+For example:
 ```
     include embox.cmds.help
 ```
-Тот же самый принцип работает и для стандартных модулей.
+The same way also works in case of standard modules.
 
 #### Параметры модуля
 Для изменения параметров модуля нужно указать в скобках имя опции и желаемое значение. Например: чтобы установить размер стека потока нужно изменить (или добавить) параметр *thread_stack_size* в модуль *embox.kernel.thread.core*:
