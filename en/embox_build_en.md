@@ -34,7 +34,7 @@ To build the image, it's necessary to set the chosen configuration as a current 
 ```
     $ make
 ```
-If everything is correct, you'll see the "Build complete" message. Also the ELF-file of the image will apear in the "build/base/bin/embox" path.
+If everything is correct, you'll see the "Build complete" message. Also the ELF-file of the image will appear in the "build/base/bin/embox" path.
 
 For instance:
 ```
