@@ -58,8 +58,8 @@ For example:
 ```
 The same way also works in case of standard modules.
 
-#### Параметры модуля
-Для изменения параметров модуля нужно указать в скобках имя опции и желаемое значение. Например: чтобы установить размер стека потока нужно изменить (или добавить) параметр *thread_stack_size* в модуль *embox.kernel.thread.core*:
+#### Parameters of module
+To change the parameters of module, it's necessary to set name of option and desired value in brackets. For example: to change size of thread stack, you need to set (to add) the *thread_stack_size* parameter in the *embox.kernel.thread.core* module:
 ```
     include embox.kernel.thread.core(thread_stack_size=0x4000)
 ```
