@@ -29,14 +29,14 @@ For example:
 ```
 In the example above we choose the existing "platform/quake3/qemu" configuration from the list.
 
-## Сборка из имеющейся конфигурации
-Для сборки образа необходимо установить выбранную конфигурацию в качестве текущей, как описано в предыдущем примере. А затем выполнить команду: 
+## Building made of existing configuration
+To build the image, it's necessary to set the chosen configuration as a current one how it was shown in the previous example. And then to run the next command: 
 ```
     $ make
 ```
-Если всё заработало правильно -- Вы увидите надпись «Build complete». Также по адресу «build/base/bin/embox» появится файл образа в ELF-формате.
+If everything is correct, you'll see the "Build complete" message. Also the ELF-file of the image will apear in the "build/base/bin/embox" path.
 
-Например:
+For instance:
 ```
     text	   data	    bss	    dec	    hex	filename
     1259425	 248540	170593504	172101469	a420f5d	build/base/bin/embox
