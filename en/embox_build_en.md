@@ -43,8 +43,8 @@ For instance:
     Build complete
 ```
 
-## Изменение характеристик системы
-После выбора конфигурации Вы можете изменить её, используя файл «сonf/». Напоминаем: если сделать «make confload-<template>» или произвести очистку, которая затронет текущую конфигурацию (например, «make distclean»), текущие изменения потеряются.
+## Changing the characteristics of the system
+Using the "conf/" file you can change the configuration after making modifications. We remind you: if to run "make confload-" or make cleaning, that connected with current configuration (e. g. "make distclean"), current changes will be lost.
 
 ### Изменение функциональности системы
 #### Изменение списка модулей
