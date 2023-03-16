@@ -133,7 +133,7 @@ You can get more information about feachures of command line, using:
 ```
     $ make help
 ```
-Существуют различные подразделы цели *help*, например, *help-mod*:There are different subsections of the *help* goal, for example, *help-mod*:
+There are different subsections of the *help* goal, for example, *help-mod*:
 ```
     $ make help-mod
 ```
@@ -149,20 +149,20 @@ Usage: make mod-<INFO>
     was included in build
 ```
 
-### Получение дизассемблера текущего образа
-Файл с дизассебмлером можно получить с помощью команды:
+### Getting disassembler of current image
+You can get the file with disassembler, using the command below:
 ```
     $ make disasm
 ```
 
-### Получение графа модулей
-Граф модулей в png-формате можно получить через:
+### Getting the graph of modules
+The command below will allow you to get graph of modules in png-format:
 ```
     $ make dot
 ```
-После выполнения команды *$ make dot* появится файл *build/doc/embox.png*.
+После выполнения команды *$ make dot* появится файл *build/doc/embox.png*.After running *make dot* command the *build/doc/embox.png* will appear.
 
-Вам потребуется установить пакет *graphviz*:
+You'll need to install the *graphviz* package:
 ```
    $ sudo apt install graphviz
 ```
