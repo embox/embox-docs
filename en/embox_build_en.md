@@ -167,14 +167,14 @@ You'll need to install the *graphviz* package:
    $ sudo apt install graphviz
 ```
 
-### Получение документации из комментариев в doxygen-формате
-Для того, чтобы сгенерировать документацию по API из комментариев в doxygen-формате, можно воспользоваться командой:
+### Getting documentation from doxygen-comments
+To generate docs based on doxygen-comments, you can do:
 ```
     $ make docsgen
 ```
-После выполнения команды *$ make docsgen* появится папка *build/docs/html*, в которой находится сгенерированная документация в html-формате.
+After running the command above the *build/docs/html* directory, that has generated html-documentation, will appear.
 
-Также Вам потребуется пакет *doxygen*:
+Also you'll need to install the *doxygen* package:
 ```
    $ sudo apt install doxygen
 ```
