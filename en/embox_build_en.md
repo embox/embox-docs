@@ -126,18 +126,18 @@ The *cacheclean*-goal also deletes "build" directory as the previous goal, but i
 
 The *distclean*-goal resets  the project to its original state. That is deleting the working configuration, cleaning all generated and compiled files.
 
-## Полезные команды
+## Useful commands
 
-### Справка по командам сборки
-Больше информации о возможностях командной строки при сборке можно получить с помощью *make* цели *help*:
+### Information about commands of building
+You can get more information about feachures of command line, using: 
 ```
     $ make help
 ```
-Существуют различные подразделы цели *help*, например, *help-mod*:
+Существуют различные подразделы цели *help*, например, *help-mod*:There are different subsections of the *help* goal, for example, *help-mod*:
 ```
     $ make help-mod
 ```
-Получить справку по управлению модулями можно следующим способом:
+To get more information about modules management you can the next way:
 ```
 Usage: make mod-<INFO>
 
