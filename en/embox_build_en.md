@@ -1,10 +1,10 @@
 # Building
 
 ## Project configuration
-Configuration is the list of modules and their parameters on the one side, and set of requirements to system functionality on the other. Check the "Modular structure of Embox" section for more details. The current configuration is in the files of "conf/" directory.
+A configuration is the list of modules and their parameters on the one side, and set of requirements to system functionality on the other. Check the "Modular structure of Embox" section for more details. The current configuration is in the files of "conf/" directory.
 
 ## Choice of configuration
-To set the configuration with desired properties, it's necessary to describe these properties in the "conf/" directory. But if the similar configuration is already exists, it'll be easy for you to use the existing description as a base for making your own configuration.
+To set the configuration with desired properties, it's necessary to describe these properties in the "conf/" directory. But if the similar configuration is already exists, it'll be more easy for you to use the existing description as a base for making your own configuration.
 
 You can see the existing configuration, using the next command:
 ```
@@ -14,9 +14,9 @@ After it's possible to load the chosen configuration the next way:
 ```
     $ make confload-<template>
 ```
-To pay attention: after using the "make confload-" command, your "conf/" directory will get files of chosen configuration. And files, that were in this directory before will be deleted.
+To pay attention: after running the "make confload-", your "conf/" directory will have files of chosen configuration. And files, that were in this directory before will be deleted.
 
-For example:
+In the next example we choose the existing "platform/quake3/qemu" configuration from the list:
 ```
     $ make confload
     List of available templates:
@@ -27,10 +27,9 @@ For example:
 
     $ make confload-platform/quake3/qemu
 ```
-In the example above we choose the existing "platform/quake3/qemu" configuration from the list.
 
 ## Building made of existing configuration
-To build the image, it's necessary to set the chosen configuration as a current one how it was shown in the previous example. And then to run the next command: 
+To build the image, it's necessary to set the chosen configuration as a current one how it was shown in the previous example. And then to run: 
 ```
     $ make
 ```
@@ -43,29 +42,29 @@ For instance:
     Build complete
 ```
 
-## Changing the characteristics of the system
-Using the "conf/" file you can change the configuration after making modifications. We remind you: if to run "make confload-" or make cleaning, that connected with current configuration (e. g. "make distclean"), current changes will be lost.
+## Changing system characteristics
+After selection of configuration you can change it, using "conf/" file. We remind you: if to run "make confload-" or make cleaning, that connected with current configuration (e. g. "make distclean"), current changes will be lost.
 
-### Changing the functionality of the system
+### Changing system functionality
 #### Modification of the modules list
-"Mods.conf" file has the description of system functionality, so you should use this file if you want to change functionality. For instance, to add a new command to the list, it's necessary to insert to "mods.conf" file the next line:
+"Mods.conf" file contains a description of system functionality, so you should use this file if you want to change functionality. For example, to add a new command to the list, it's necessary to insert to "mods.conf" file the next line:
 ```
     include <PACKAGE_NAME>.<MODULE_NAME>
 ```
-For example:
+For instance:
 ```
     include embox.cmds.help
 ```
 The same way also works in case of standard modules.
 
-#### Parameters of module
-To change the parameters of module, it's necessary to set name of option and desired value in brackets. For example: to change size of thread stack, you need to set (to add) the *thread_stack_size* parameter in the *embox.kernel.thread.core* module:
+#### Module parameters
+To set size of thread stack, you need to change (or to add) the *thread_stack_size* parameter in the *embox.kernel.thread.core* module:
 ```
     include embox.kernel.thread.core(thread_stack_size=0x4000)
 ```
 
-#### Порядок загрузки
-Также можно повлиять на порядок загрузки модулей системы в конфигурации. Для этого используется атрибут «@Runlevel(level)» (например: *@Runlevel(2)*), но обычно этого не требуется, поскольку модули загружаются по зависимостям между ними.
+#### Load order
+Также можно повлиять на порядок загрузки модулей системы в конфигурации. Для этого используется атрибут «@Runlevel(level)» (например: *@Runlevel(2)*), но обычно этого не требуется, поскольку модули загружаются по зависимостям между ними.You can manage the order, in which the modules of system load in configuration. Use the «@Runlevel(level)» (e. g. *@Runlevel(2)*) attribute for this purpose, but usually it's not required, because modules are loading according to dependencies (if some module *B* depends on some module *A*, then *A* will be loaded before *B*).
 
 
 #### Изменение реализации интерфейса
