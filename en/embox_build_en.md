@@ -107,24 +107,24 @@ Also another important flag is the *-g* linker flag, that is the same as adding 
 ```
 You can delete this flag for size reduction, but in this case the debugging will be unavailable.
 
-## Очистка проекта
-Сборка Embox происходит в несколько этапов. Основные из них это:
+## Cleaning the project
+Embox building has several stages. The main of them are:
 
-* Конфигурация проекта
-* Создание графа зависимостей модулей и генерация на его основе артефактов для сборки
-* Сама сборка (компиляция, линковка)
+* Project configuration
+* Creating modules dependency graph and using it for generation of artifacts for building
+* Building itself (compilation, linking)
 
-Можно сбрасывать (очищать) проект до разных стадий сборки. Для этого используются три цели make:
+You can reset (clean) the project to different stages of building. The are the next three make-goals for this purpose:
 
 * make distclean
 * make cacheclean
 * make clean
 
-Цель *clean* просто удаляет папку «build» c собранными объектными и бинарными файлами. Для большинства случаев этого достаточно.
+The *clean*-goal just deletes "build" directory with objects and binary files. It's enough for most cases.
 
-Цель *cacheclean* полностью выполняет цель *clean* (то есть удаляет папку «build»), но кроме этого удаляет также папку «mk/.cache», в которой содержатся артефакты от разбора mybuild-файлов (файлов описания модулей).
+The *cacheclean*-goal also deletes "build" directory as the previous goal, but in addition *cacheclean* also deletes "mk/.cache" directory,that contains artifacts from Mybuild-files.
 
-Цель *distclean* полностью приводит проект в первоначальное состояние. То есть удаляет рабочую конфигурацию, чистит все сгенерированные и скомпилированные файлы.
+The *distclean*-goal resets  the project to its original state. That is deleting the working configuration, cleaning all generated and compiled files.
 
 ## Полезные команды
 
