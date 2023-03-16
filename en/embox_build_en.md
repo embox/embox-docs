@@ -64,30 +64,30 @@ To set size of thread stack, you need to change (or to add) the *thread_stack_si
 ```
 
 #### Load order
-Также можно повлиять на порядок загрузки модулей системы в конфигурации. Для этого используется атрибут «@Runlevel(level)» (например: *@Runlevel(2)*), но обычно этого не требуется, поскольку модули загружаются по зависимостям между ними.You can manage the order, in which the modules of system load in configuration. Use the «@Runlevel(level)» (e. g. *@Runlevel(2)*) attribute for this purpose, but usually it's not required, because modules are loading according to dependencies (if some module *B* depends on some module *A*, then *A* will be loaded before *B*).
+You can manage the order, in which the modules of system load in configuration. Use the «@Runlevel(level)» (e. g. *@Runlevel(2)*) attribute for this purpose, but usually it's not required, because modules are loading according to dependencies (if some module *B* depends on some module *A*, then *A* will be loaded before *B*).
 
 
-#### Изменение реализации интерфейса
-Для изменения реализации интерфейса или абстрактного модуля (подробнее об этом -- в разделе «Модульная структура Embox»), нужно просто подключить другой модуль, реализующий данный интерфейс.
+#### Changing of interface implementation
+Для изменения реализации интерфейса или абстрактного модуля (подробнее об этом -- в разделе «Модульная структура Embox»), нужно просто подключить другой модуль, реализующий данный интерфейс.To change interface implementation (that is the same as abstraction module; see "The modular structure of Embox" section for more details), you need just to add a module of this interface to your configuration.
 
-Например, абстрактный модуль *heap_api*:
+For example, the abstract module *heap_api*:
 ```
     @DefaultImpl(heap_bm)
     abstract module heap_api {
     	...
     }
 ```
-Для подключения модуля *heap_simple*, который также реализует данный интерфейс
+To add the *heap_simple* module,
 ```
     module heap_simple extends heap_api {module heap_simple extends heap_api {
     ...
     }
 ```
-необходимо удалить (если есть) модуль *heap_bm*, то есть следующую строчку:
+it's necessary to delete *heap_bm* module (if you have it), that is the same as the next line:
 ```
     include embox.mem.heap_bm
 ```
-и все остальные модули, которые наследуют данный абстрактный модуль, и добавить:
+and then to do:
 ```
     include embox.mem.heap_simple
 ```
