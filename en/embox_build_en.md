@@ -179,17 +179,17 @@ Also you'll need to install the *doxygen* package:
    $ sudo apt install doxygen
 ```
 
-### Управление модулями
-Для получения списка всех модулей, которые включены в текущую конфигурацию, нужно выполнить команду:
+### Modules management
+To get the list of all modules, that are in the current configuration, it's necessary to run:
 ```
    $ make mod-list
 ```
 
-Можно получить более подробную информацию по каждому модулю. Например, информацию о модуле *embox.net.route* можно получить с помощью команды:
+You can get more details about every module. For instance, you can get the information about *embox.net.route* module, using the next command:
 ```
     $ make mod-brief-embox.net.route
 ```
-В результате Вы получите следующий вывод:
+You'll get the next output as a result:
 ```
     --- embox.net.route ---
     Inclusion reason: as dependence
@@ -208,13 +208,17 @@ Also you'll need to install the *doxygen* package:
     Sources:
      src/net/l3/route.c
 ```
-Из полученного выше результата можно узнать: список файлов, включённых в модуль; опции с уже установленными значениями; причину, по которой включен модуль (напрямую из конфига или подтянулся по зависимостям) и зависимости самого модуля.
+From the output above you can get information about:
 
-Иногда нужно понять, почему подключается тот или иной модуль. Для этого можно воспользоваться командой:
+* list of files, that are in some modules
+* options, that have established values
+* the reason of switching-on some module and dependencies of this module
+
+Sometimes you need to define: "Why does one or other module switch-on"? For this purpose you can use:
 ```
     make include-reason-<module_name>
 ```
-Продемонстрируем работу этой команды на примере того же модуля *embox.net.route*:
+We used the *embox.net.route* module to demonstrate how this command works:
 ```
     $ make mod-include-reason-embox.net.route
     embox.net.route: as dependence:
