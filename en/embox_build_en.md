@@ -68,7 +68,7 @@ You can manage the order, in which the modules of system load in configuration. 
 
 
 #### Changing of interface implementation
-Для изменения реализации интерфейса или абстрактного модуля (подробнее об этом -- в разделе «Модульная структура Embox»), нужно просто подключить другой модуль, реализующий данный интерфейс.To change interface implementation (that is the same as abstraction module; see "The modular structure of Embox" section for more details), you need just to add a module of this interface to your configuration.
+To change interface implementation (that is the same as abstraction module; see "The modular structure of Embox" section for more details), you need just to add a module of this interface to your configuration.
 
 For example, the abstract module *heap_api*:
 ```
@@ -92,23 +92,20 @@ and then to do:
     include embox.mem.heap_simple
 ```
 
-### Изменение флагов компиляции (отладка, оптимизации)
-Некоторыми флагами компиляции можно управлять. В файле «conf/build.conf» прописаны флаги компиляции.
-Например, флаг оптимизации (флаг, который часто требует изменения):
+### Changing flags of compilation (debugging, optimization)
+You can manage some flags of compilation. The "conf/build.conf" has them. For example, flag of optimization (that often requires to make changes):
 ```
     CFLAGS += -O0
 ```
-Строчку выше стоит заменить на:
+To build the Embox with optimization 2, you should the line above to the next one:
 ```
     CFLAGS += -O2
 ```
-для сборки с оптимизацией *O2*.
-
-Также важным флагом является флаг *-g* линкера, который добавляет в образ системы секцию с отладочной информацией:
+Also another important flag is the *-g* linker flag, that is the same as adding debugging information in system image:
 ```
     LDFLAGS += -N -g
 ```
-Его также можно удалить для уменьшения размера, но тогда отладка будет недоступна.
+You can delete this flag for size reduction, but in this case the debugging will be unavailable.
 
 ## Очистка проекта
 Сборка Embox происходит в несколько этапов. Основные из них это:
