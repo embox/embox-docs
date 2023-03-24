@@ -272,7 +272,7 @@ The system starts to load.
 At any moment in gdb terminal you can type <kbd>ctrl + C</kbd> and see the stack of the current thread (`backtrace`) or set breakpoints (`break <function name>`, `break <file name>:<line number>`).
 
 ## Connection of external repository
-Embox allows connection of external repo for modules and templates. To connect them to each other, it's enough to specify root directory of repository:
+Embox allows to connect external repo to modules and templates. It's enough to specify root directory of repository for this purpose:
 ```
     make ext_conf EXT_PROJECT_PATH=<your projects path>
 ```
