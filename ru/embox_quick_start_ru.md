@@ -61,8 +61,8 @@
 
 
 ## Настройка окружения
-Необходимые пакеты: make, gcc (кросс-компилятор под выбранную архитектуру,  см. “Установка кросс-компилятора”).
-Дополнительные пакеты (рекомендуется установить сразу): build-essential, gcc-multilib, curl, libmpc-dev, python.
+Необходимые пакеты: **make**, **gcc** (кросс-компилятор под выбранную архитектуру,  см. “Установка кросс-компилятора”).
+Дополнительные пакеты (рекомендуется установить сразу): **build-essential**, **gcc-multilib**, **curl**, **libmpc-dev**, **python**.
 
 Пример установки для Ubuntu/Debian:
 ```
@@ -100,7 +100,7 @@
 ### SPARC, Microblaze, MIPS, PowerPC, MSP430:
 Для этих архитектур можно воспользоваться нашим проектом по сборке кросс-компилятора: [https://github.com/embox/crosstool](https://github.com/embox/crosstool).
 
-Также можно скачать последнюю версию готового к использованию архива отсюда: [https://github.com/embox/crosstool/releases](https://github.com/embox/crosstool/releases).
+Также можно скачать последнюю версию архива отсюда: [https://github.com/embox/crosstool/releases](https://github.com/embox/crosstool/releases).
 
 Или собрать его, выкачав скрипты из репозитория с помощью команды:
 ```
