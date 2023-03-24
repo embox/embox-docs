@@ -9,13 +9,13 @@ Clone git repository:
 ```
 Or download as an archive:
 ```
-    [https://github.com/embox/embox/releases](https://github.com/embox/embox/releases)
+    [https://github.com/embox/embox/releases](https://github.com/embox/embox/releases/)
 ```
 ## Work on Windows or MacOS
 ### Please follow the next recommendations:
 Download an actual version of PowerShell:
 ```
-    [How to download PowerShell](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.3)
+    [How to download PowerShell](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.3/)
 ```
 Open PowerShell as an administrator and install WSL2 (please pay your attention to the demands on Windows version):
 ```
