@@ -154,9 +154,9 @@ Now you are able to run Embox:
 ```
 Console output example:
 ```
-Embox kernel start
-    unit: initializing embox.kernel.task.task_resource: done
-    unit: initializing embox.mem.vmem_alloc: done
+    Embox kernel start
+        unit: initializing embox.kernel.task.task_resource: done
+        unit: initializing embox.mem.vmem_alloc: done
 ```
 If all unit tests passed successfully and all modules loaded, then command prompt will appear.
 Now you can execute commands included in the configuration (`mods.conf`). You can start with ***help*** command which prints list of available commands.
@@ -270,3 +270,14 @@ After running that QEMU waits for a connection from a gdb-client. Run gdb in the
 The system starts to load.
 
 At any moment in gdb terminal you can type <kbd>ctrl + C</kbd> and see the stack of the current thread (`backtrace`) or set breakpoints (`break <function name>`, `break <file name>:<line number>`).
+
+## Connection of external repository
+Embox allows connection of external repo for modules and templates. To connect them to each other, it's enough to specify root directory of repository:
+```
+    make ext_conf EXT_PROJECT_PATH=<your projects path>
+```
+To make templates visible through "make confload" and "make confload-" calls, connected repo has to have the next folder-structure:
+```
+    <root_folder>/<project_name>/templates
+```
+Modules can be in random folders. Search is carried out, using *Mybuild* and **.my* files.
