@@ -7,17 +7,19 @@ Clone git repository:
 ```
     $ git clone https://github.com/embox/embox
 ```
-Or download as an archive [https://github.com/embox/embox/releases](https://github.com/embox/embox/releases)
-
+Or download as an archive:
+```
+    [https://github.com/embox/embox/releases](https://github.com/embox/embox/releases)
+```
 ## Work on Windows or MacOS
 ### Please follow the next recommendations:
 Download an actual version of PowerShell:
 ```
-[How to download PowerShell](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.3)
+    [How to download PowerShell](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.3)
 ```
 Open PowerShell as an administrator and install WSL2 (please pay your attention to the demands on Windows version):
 ```
-[How to install WSL2](https://learn.microsoft.com/en-us/windows/wsl/install-manual)
+    [How to install WSL2](https://learn.microsoft.com/en-us/windows/wsl/install-manual)
 ```
 Before the next step upgrade WSL1 to WSL2 if you did'nt do this(the instruction is in a link above). In other way Embox won't run on Windows.
 
@@ -55,8 +57,9 @@ Run the next three commands
 ```
 P.S.: If you have any problems with running Embox on Windows -- please check a correctness of the inserted commands.
 If it's correct -- you can use the recommendations from the article(the link is below):
-
+```
 [How to solve problems with WSL](https://learn.microsoft.com/en-us/windows/wsl/troubleshooting)
+```
 
 ## Enviroment Settings
 Minimal required packages: *make*, *gcc*, (cross-compiler for target platform. see "Cross-compiler installation").
@@ -100,11 +103,11 @@ Extract files from archive and set *PATH* enviroment variable:
 You can try to use some cross-compiler based on gcc in case if you already have a suitable one.
 But it would be better if you will use our project for cross-compiler installation:
 ```
-[https://github.com/embox/crosstool](https://github.com/embox/crosstool)
+    [https://github.com/embox/crosstool](https://github.com/embox/crosstool)
 ```
 You can use already ready-to-use archives from:
 ```
-[https://github.com/embox/crosstool/releases](https://github.com/embox/crosstool/releases)
+    [https://github.com/embox/crosstool/releases](https://github.com/embox/crosstool/releases)
 ```
 Or you can build cross-compiler with the script in the project's root folder:
 ```
