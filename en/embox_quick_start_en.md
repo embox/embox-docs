@@ -41,13 +41,13 @@ Run the commands below in command line of Ubuntu for installing necessary progra
 ```
 Clone version of embox to yourself(use https or ssh):
 ```
-   git clone <https://github.com/embox/embox.git>
-   git clone <git@github.com:embox/embox.git>
+    git clone <https://github.com/embox/embox.git>
+    git clone <git@github.com:embox/embox.git>
 ```
 
 Open the directory of the embox project
 ```
-   cd embox
+    cd embox
 ```
 Run the next three commands
 ```
@@ -58,7 +58,7 @@ Run the next three commands
 P.S.: If you have any problems with running Embox on Windows -- please check a correctness of the inserted commands.
 If it's correct -- you can use the recommendations from the article(the link is below):
 ```
-[How to solve problems with WSL](https://learn.microsoft.com/en-us/windows/wsl/troubleshooting)
+    [How to solve problems with WSL](https://learn.microsoft.com/en-us/windows/wsl/troubleshooting)
 ```
 
 ## Enviroment Settings
@@ -260,14 +260,14 @@ Full module name consist of the corresponding package name appended with module 
 ## Debugging
 You can use the same script with *-s -S -no-kvm* flags for debugging:
 ```
-$ sudo ./scripts/qemu/auto_qemu -s -S -no-kvm
+    $ sudo ./scripts/qemu/auto_qemu -s -S -no-kvm
 ```
 After running that QEMU waits for a connection from a gdb-client. Run gdb in the other terminal:
 ```
-$ gdb ./build/base/bin/embox
-...
-(gdb) target extended-remote :1234
-(gdb) continue
+    $ gdb ./build/base/bin/embox
+    ...
+    (gdb) target extended-remote :1234
+    (gdb) continue
 ```
 The system starts to load.
 
