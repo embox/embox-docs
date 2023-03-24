@@ -1,4 +1,3 @@
-
 # Quick start
 It’s better to get started with Embox running on QEMU emulator, which supports different CPU architectures.
 
@@ -71,11 +70,10 @@ For Debian/Ubuntu:
 ```
 For Arch:
 ```
-    sudo pacman -S make gcc-multilib cpio qemu
+    $ sudo pacman -S make gcc-multilib cpio qemu
 ```
 
 ## Cross-compiler installation
-
 ***x86***:
 ```
     $ sudo apt-get install gcc
@@ -164,7 +162,8 @@ Now you can execute commands included in the configuration (`mods.conf`). You ca
 Press ***ctrl+’A’*** and then `***x***` to exit from Qemu.
 
 ## Preliminaries to Mybuild build system
-Embox is modular and configurable. Declarative program language "Mybuild" has been developed for these features. Mybuild allows to describe both single modules and whole target system.
+Embox is modular and configurable. Declarative program language "Mybuild" has been developed for these features. 
+Mybuild allows to describe both single modules and whole target system.
 
 A module is a base concept for build system. A module description contains: source files list, options which can be set for the module during configuration, and dependences list.
 
