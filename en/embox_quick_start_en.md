@@ -9,7 +9,7 @@ Clone git repository:
 ```
 Or download as an archive:
 ```
-    [https://github.com/embox/embox/releases](https://github.com/embox/embox/releases/)
+    [https://github.com/embox/embox/releases][https://github.com/embox/embox/releases/]
 ```
 ## Work on Windows or MacOS
 ### Please follow the next recommendations:
