@@ -11,27 +11,22 @@ Or download as an archive [https://github.com/embox/embox/releases](https://gith
 
 ## Work on Windows or MacOS
 ### Please follow the next recommendations:
-
-Download an actual version of PowerShell
-
+Download an actual version of PowerShell:
+```
 [How to download PowerShell](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.3)
-
-Open PowerShell as an administrator and install WSL2 (please pay your attention to the demands on Windows version)
-
+```
+Open PowerShell as an administrator and install WSL2 (please pay your attention to the demands on Windows version):
+```
 [How to install WSL2](https://learn.microsoft.com/en-us/windows/wsl/install-manual)
-
 ```
-Before the next step upgrade WSL1 to WSL2 if you did'nt do this(the instruction is in a link above). In other way Embox won't run on Windows
-```
+Before the next step upgrade WSL1 to WSL2 if you did'nt do this(the instruction is in a link above). In other way Embox won't run on Windows.
 
-Download Ubuntu from Microsoft Store
-
+### Download Ubuntu from Microsoft Store
 Check yout version of WSL the next way: insert the command below in PowerShell:
 ```
     wsl -l -v
 ```
 Run the commands below in command line of Ubuntu for installing necessary programs:
-
 ```
     sudo apt-get update
     sudo apt-get install unzip
@@ -42,10 +37,11 @@ Run the commands below in command line of Ubuntu for installing necessary progra
     sudo apt-get install python3
     sudo apt-get install python-is-python3
 ```
-Clone version of embox to yourself(use https or ssh)
-
+Clone version of embox to yourself(use https or ssh):
+```
    git clone <https://github.com/embox/embox.git>
    git clone <git@github.com:embox/embox.git>
+```
 
 Open the directory of the embox project
 ```
@@ -62,11 +58,9 @@ If it's correct -- you can use the recommendations from the article(the link is 
 
 [How to solve problems with WSL](https://learn.microsoft.com/en-us/windows/wsl/troubleshooting)
 
-
-
 ## Enviroment Settings
 Minimal required packages: *make*, *gcc*, (cross-compiler for target platform. see "Cross-compiler installation").
-Optional packages which are recomended to install at once: *build-essential*, *gcc-multilib*, *curl*, *libmpc-dev*, *python*.
+Optional packages, which are recomended to install at once: *build-essential*, *gcc-multilib*, *curl*, *libmpc-dev*, *python*.
 
 For Debian/Ubuntu:
 ```
@@ -96,7 +90,7 @@ or for Debian:
 ```
     $ sudo apt install gcc-arm-none-eabi
 ```
-You can also download the archive with ARM cross-tools from [https://launchpad.net/gcc-arm-embedded](https://launchpad.net/gcc-arm-embedded)
+You can also download the archive with ARM cross-tools from [https://launchpad.net/gcc-arm-embedded](https://launchpad.net/gcc-arm-embedded).
 Extract files from archive and set *PATH* enviroment variable:
 ```
     $ export PATH=$PATH:<path to toolchain>/gcc-arm-none-eabi-<version>/bin
@@ -104,8 +98,15 @@ Extract files from archive and set *PATH* enviroment variable:
 
 ***SPARC, Microblaze, MIPS, PowerPC, MSP430***:
 You can try to use some cross-compiler based on gcc in case if you already have a suitable one.
-But it would be better if you will use our project for cross-compiler installation [https://github.com/embox/crosstool](https://github.com/embox/crosstool).
-You can use already ready-to-use archives from [https://github.com/embox/crosstool/releases](https://github.com/embox/crosstool/releases). Or you can build cross-compiler with the script in the project's root folder:
+But it would be better if you will use our project for cross-compiler installation:
+```
+[https://github.com/embox/crosstool](https://github.com/embox/crosstool)
+```
+You can use already ready-to-use archives from:
+```
+[https://github.com/embox/crosstool/releases](https://github.com/embox/crosstool/releases)
+```
+Or you can build cross-compiler with the script in the project's root folder:
 ```
     $ ./crosstool.sh ARCH
 ```
@@ -147,7 +148,6 @@ Example of how to build with 4 parallel jobs:
 ```
     $ make -j4
 ```
-
 Now you are able to run Embox:
 ```
     $ ./scripts/qemu/auto_qemu
@@ -155,8 +155,8 @@ Now you are able to run Embox:
 Console output example:
 ```
 Embox kernel start
-	unit: initializing embox.kernel.task.task_resource: done
-	unit: initializing embox.mem.vmem_alloc: done
+    unit: initializing embox.kernel.task.task_resource: done
+    unit: initializing embox.mem.vmem_alloc: done
 ```
 If all unit tests passed successfully and all modules loaded, then command prompt will appear.
 Now you can execute commands included in the configuration (`mods.conf`). You can start with ***help*** command which prints list of available commands.
@@ -164,11 +164,14 @@ Now you can execute commands included in the configuration (`mods.conf`). You ca
 Press ***ctrl+’A’*** and then `***x***` to exit from Qemu.
 
 ## Preliminaries to Mybuild build system
-Embox is modular and configurable. Declarative program language Mybuild has been developed for these features. Mybuild allows to describe both single modules and whole target system.
+Embox is modular and configurable. Declarative program language "Mybuild" has been developed for these features. Mybuild allows to describe both single modules and whole target system.
+
 A module is a base concept for build system. A module description contains: source files list, options which can be set for the module during configuration, and dependences list.
+
 The configuration is a particular description of the whole system. It contains list of required modules, modules options and build rules (cross-compiler, additional compiler flags, memory map etc.).
+
 Graph of the system will be based on the configuration and modules descriptions.
-Build system then generates different build artifacts: linker scripts, makefiles, headers.
+Build system, that generates different build artifacts: linker scripts, makefiles, headers.
 It's not necesary to include all modules, they will be enabled using dependencies for each module included in the initial configuration list.
 
 Current configuration locates in ***conf/*** folder. It can be set up with:
@@ -179,8 +182,7 @@ For example, to set up demo configuration for qemu-arm you should do the followi
 ```
     $ make confload-arm/qemu
 ```
-
-Use 
+Use: 
 ```
     $ make confload
 ```
@@ -198,12 +200,10 @@ Source code of Embox application is usual POSIX program written in C, and so can
 To add your own simplest application "Hello world" you can do the following:
 
 * Create folder *hello_world* in *src/cmds*:
-
 ```
      $ mkdir src/cmds/hello_world
 ```
 * Create *src/cmds/hello_world/hello_world.c*:
-
 ```
      #include <stdio.h>
 
@@ -211,9 +211,7 @@ To add your own simplest application "Hello world" you can do the following:
           printf("Hello, world!\n");
      }
 ```
-
 * Create file *src/cmds/hello_world/Mybuild* with your module description:
-
 ```
      package embox.cmd
 
@@ -223,27 +221,19 @@ To add your own simplest application "Hello world" you can do the following:
      	source "hello_world.c"
      }
 ```
-
 * Now add the application into your configuration *conf/mods.conf*:
-
 ```
      include embox.cmd.hello_world
 ```
-
 * Build Embox:
-
 ```
      $ make
 ```
-
  * Run Embox:
-
 ```
      $ ./scripts/qemu/auto_qemu
 ```
-
  * Type ***help*** in Embox console to check if there is ***hello_world*** in commands list. Execute ***hello_world*** command and you will see:
-
 ```
      root@embox:/#hello_world
      Hello, world!
@@ -252,7 +242,6 @@ To add your own simplest application "Hello world" you can do the following:
 
 ### Mybuild file for "Hello World"
 Let's look at the Mybuild file from "Hello world" example in more details:
-
 ```
      package embox.cmd
 
@@ -262,7 +251,6 @@ Let's look at the Mybuild file from "Hello world" example in more details:
      	source "hello_world.c"
      }
 ```
-
 The first line contains package name ***embox.cmd***. In Embox all modules are organized into packages.
 Full module name consist of the corresponding package name appended with module name. Module name is defined in string ***module hello_world***.
 
