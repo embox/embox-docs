@@ -55,15 +55,14 @@ int main(int argc, char *argv[]) {
 
 ```c
 #include <unistd.h>
-#include <kernel/irq.h>
+
 #include <drivers/gpio/gpio.h>
 
 #define LED4_PIN        (1 << 12)
 #define USER_BUTTON_PIN (1 << 0)
 
-irq_return_t user_button_hnd(unsigned int irq_nr, void *data) {
-    gpio_toggle(GPIO_PORT_D, LED4_PIN);
-    return IRQ_HANDLED;
+void user_button_hnd(void *data) {
+    gpio_toggle(GPIO_PORT_D, LED4_PIN);    
 }
 
 int main(int argc, char *argv[]) {

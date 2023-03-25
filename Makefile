@@ -7,10 +7,10 @@ user_manual_en:
 	en/headers/embox_user_manual_header_en.md \
 	en/embox_quick_overview_en.md \
 	en/embox_quick_start_en.md \
-	en/embox_supported_platforms_en.md \
-	en/embox_supported_platforms_qemu_en.md \
-	en/embox_supported_platforms_x86_en.md \
-	en/embox_supported_platforms_arm_en.md \
+	en/platforms/embox_supported_platforms_en.md \
+	en/platforms/embox_supported_platforms_qemu_en.md \
+	en/platforms/embox_supported_platforms_x86_en.md \
+	en/platforms/embox_supported_platforms_arm_en.md \
 	en/drivers/embox_drivers_en.md \
 	en/drivers/embox_drivers_framebuffer_en.md \
 	en/drivers/embox_drivers_flash_en.md \
@@ -43,10 +43,10 @@ user_manual_ru:
 	ru/headers/embox_user_manual_header_ru.md \
 	ru/embox_quick_overview_ru.md \
 	ru/embox_quick_start_ru.md \
-	ru/embox_supported_platforms_ru.md \
-	ru/embox_supported_platforms_qemu_ru.md \
-	ru/embox_supported_platforms_x86_ru.md \
-	ru/embox_supported_platforms_arm_ru.md \
+	ru/platforms/embox_supported_platforms_ru.md \
+	ru/platforms/embox_supported_platforms_qemu_ru.md \
+	ru/platforms/embox_supported_platforms_x86_ru.md \
+	ru/platforms/embox_supported_platforms_arm_ru.md \
 	ru/embox_modular_structure_ru.md \
 	ru/drivers/embox_drivers_ru.md \
 	ru/drivers/embox_drivers_diag_ru.md \
@@ -61,9 +61,9 @@ user_manual_ru:
 	ru/drivers/embox_drivers_devfs_ru.md \
 	ru/embox_build_ru.md \
 	ru/embox_execute_debug_ru.md \
-	ru/embox_hello_world_example_ru.md \
-	ru/embox_blinking_led_example_ru.md \
-	ru/embox_external_app_example_ru.md \
+	ru/examples/embox_hello_world_example_ru.md \
+	ru/examples/embox_blinking_led_example_ru.md \
+	ru/examples/embox_external_app_example_ru.md \
 	ru/embox_cxx_support_ru.md \
 	-o embox_user_manual_ru.pdf
 
