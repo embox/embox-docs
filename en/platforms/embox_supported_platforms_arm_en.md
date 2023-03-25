@@ -7,4 +7,3 @@ Embox supports several popular hardware platforms based on ARM chip:
 * STM32 MCU Eval Tools
 * Raspberry Pi
 * BeagleBoard
-

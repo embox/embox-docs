@@ -7,4 +7,3 @@ Embox supports:
 * qemu-system-i386
 * Load with GRUB
 * BifferBoard
-

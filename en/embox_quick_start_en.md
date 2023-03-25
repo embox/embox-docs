@@ -1,4 +1,3 @@
-
 # Quick start
 It’s better to get started with Embox running on QEMU emulator, which supports different CPU architectures.
 
@@ -7,21 +6,21 @@ Clone git repository:
 ```
     $ git clone https://github.com/embox/embox
 ```
-Or download as an archive:
-```
-    [https://github.com/embox/embox/releases](https://github.com/embox/embox/releases/)
-```
+Or download as an archive [https://github.com/embox/embox/releases](https://github.com/embox/embox/releases).
+
 ## Work on Windows or MacOS
 ### Please follow the next recommendations:
 Download an actual version of PowerShell:
-```
-    [How to download PowerShell](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.3/)
-```
+
+[How to download PowerShell](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.3/)
+
 Open PowerShell as an administrator and install WSL2 (please pay your attention to the demands on Windows version):
+
+[How to install WSL2](https://learn.microsoft.com/en-us/windows/wsl/install-manual)
 ```
-    [How to install WSL2](https://learn.microsoft.com/en-us/windows/wsl/install-manual)
+    Before the next step upgrade WSL1 to WSL2 if you did'nt do this(the instruction is in a link above).
+    In other way Embox won't run on Windows.
 ```
-Before the next step upgrade WSL1 to WSL2 if you did'nt do this(the instruction is in a link above). In other way Embox won't run on Windows.
 
 ### Download Ubuntu from Microsoft Store
 Check yout version of WSL the next way: insert the command below in PowerShell:
@@ -57,9 +56,9 @@ Run the next three commands
 ```
 P.S.: If you have any problems with running Embox on Windows -- please check a correctness of the inserted commands.
 If it's correct -- you can use the recommendations from the article(the link is below):
-```
-    [How to solve problems with WSL](https://learn.microsoft.com/en-us/windows/wsl/troubleshooting)
-```
+
+[How to solve problems with WSL](https://learn.microsoft.com/en-us/windows/wsl/troubleshooting)
+
 
 ## Enviroment Settings
 Minimal required packages: *make*, *gcc*, (cross-compiler for target platform. see "Cross-compiler installation").
@@ -73,11 +72,10 @@ For Debian/Ubuntu:
 ```
 For Arch:
 ```
-    sudo pacman -S make gcc-multilib cpio qemu
+    $ sudo pacman -S make gcc-multilib cpio qemu
 ```
 
 ## Cross-compiler installation
-
 ***x86***:
 ```
     $ sudo apt-get install gcc
@@ -101,14 +99,13 @@ Extract files from archive and set *PATH* enviroment variable:
 
 ***SPARC, Microblaze, MIPS, PowerPC, MSP430***:
 You can try to use some cross-compiler based on gcc in case if you already have a suitable one.
+
 But it would be better if you will use our project for cross-compiler installation:
-```
-    [https://github.com/embox/crosstool](https://github.com/embox/crosstool)
-```
+[https://github.com/embox/crosstool](https://github.com/embox/crosstool)
+
 You can use already ready-to-use archives from:
-```
-    [https://github.com/embox/crosstool/releases](https://github.com/embox/crosstool/releases)
-```
+[https://github.com/embox/crosstool/releases](https://github.com/embox/crosstool/releases)
+
 Or you can build cross-compiler with the script in the project's root folder:
 ```
     $ ./crosstool.sh ARCH
@@ -157,9 +154,9 @@ Now you are able to run Embox:
 ```
 Console output example:
 ```
-Embox kernel start
-    unit: initializing embox.kernel.task.task_resource: done
-    unit: initializing embox.mem.vmem_alloc: done
+    Embox kernel start
+        unit: initializing embox.kernel.task.task_resource: done
+        unit: initializing embox.mem.vmem_alloc: done
 ```
 If all unit tests passed successfully and all modules loaded, then command prompt will appear.
 Now you can execute commands included in the configuration (`mods.conf`). You can start with ***help*** command which prints list of available commands.
@@ -167,7 +164,8 @@ Now you can execute commands included in the configuration (`mods.conf`). You ca
 Press ***ctrl+’A’*** and then `***x***` to exit from Qemu.
 
 ## Preliminaries to Mybuild build system
-Embox is modular and configurable. Declarative program language "Mybuild" has been developed for these features. Mybuild allows to describe both single modules and whole target system.
+Embox is modular and configurable. Declarative program language "Mybuild" has been developed for these features. 
+Mybuild allows to describe both single modules and whole target system.
 
 A module is a base concept for build system. A module description contains: source files list, options which can be set for the module during configuration, and dependences list.
 
@@ -272,3 +270,14 @@ After running that QEMU waits for a connection from a gdb-client. Run gdb in the
 The system starts to load.
 
 At any moment in gdb terminal you can type <kbd>ctrl + C</kbd> and see the stack of the current thread (`backtrace`) or set breakpoints (`break <function name>`, `break <file name>:<line number>`).
+
+## Connection of external repository
+Embox allows to connect external repo to modules and templates. It's enough to specify root directory of repository for this purpose:
+```
+    make ext_conf EXT_PROJECT_PATH=<your projects path>
+```
+To make templates visible through "make confload" and "make confload-" calls, connected repo has to have the next folder-structure:
+```
+    <root_folder>/<project_name>/templates
+```
+Modules can be in random folders. Search is carried out, using *Mybuild* and **.my* files.
