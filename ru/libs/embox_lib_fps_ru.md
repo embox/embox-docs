@@ -1,12 +1,12 @@
 # FPS: Полезная библиотека для вывода видео
 
-From the name of this library it's clear that it's supposed to be used for frame-per-second count, but it also have a number of features, which can help you to work with graphics output.Из названия библиотеки (FPS -- «frame-per-second») следует, что уё можно использовать для подсчёта кадров в секунду. Но она также имеет ряд функций, которые могут помочь Вам в работе с графическим выводом.«»
+Из названия библиотеки (FPS -- «frame-per-second») следует, что её можно использовать для подсчёта кадров в секунду. Но она также имеет ряд функций, которые могут помочь Вам в работе с графическим выводом.«»
 
-## Interface
+## Интерфейс
 
-Module name is `embox.lib.fps`, so either `depends embox.lib.fps` should be added to your Mybuild module or `include embox.lib.fps` should be explicitly added to `conf/mods.conf` (second option is not recommended though).
+Название модуля -- `embox.lib.fps`, поэтому Вам следует или добавить `depends embox.lib.fps` в Ваш модуль «Mybuild», или явно вставить `include embox.lib.fps` в `conf/mods.conf` (хотя второй вариант использовать не рекомендуется).
 
-Header file: `#include <fps/fps.h>`
+Заголовочный файл: `#include <fps/fps.h>`.
 
 ## Basic usage
 
