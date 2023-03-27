@@ -8,30 +8,30 @@
 
 Заголовочный файл: `#include <fps/fps.h>`.
 
-## Basic usage
+## Основное применение
 
-At first, make sure to be familiar with frame buffer interface: [[Frame buffer]].
+Для начала убедитесь, что Вы знакомы с интерфейсом фрейм-буфера: [[Frame buffer]].
 
-After you obtained `struct fb_info *`, you can use FPS library as simple as follows:
+После того, как Вы получили `struct fb_info *`, Вы можете использовать FPS-библиотеку так же просто, как в следующем примере:
 ```c
   struct fb_info *fbi = fb_lookup(0);
   fps_set_format("Hello, world!");
   fps_print(fbi);
 ```
 
-Now `Hello, world!` should appear at the left upper corner of the screen. This doesn't seem very useful, so let's actually print FPS rate:
+Теперь надпись `Hello, world!` должна появиться в левом верхнем углу экрана. Да, это не выглядит как что-то полезное, поэтому давайте выведем на экран фактическую скорость кадров в секунду:
 
 ```c
   struct fb_info *fbi = fb_lookup(0);
-  /* Default format is "Embox FPS=%d" */
-  fps_set_format("Hello, world!\nFPS=%d"); /* \n works for format string */
+  /* Формат по умолчанию -- «Embox FPS=%d» */
+  fps_set_format("Hello, world!\nFPS=%d"); /* \n работает в случае с format string */
   while(1) {
         fps_print(fbi);
         msleep(100);
   }
 ```
 
-Now there should be something like "FPS=10" on the second line of the screen.
+Теперь на экране (на второй строчке) должна появиться надпись наподобие «FPS=10».
 
 ## Double buffering
 
