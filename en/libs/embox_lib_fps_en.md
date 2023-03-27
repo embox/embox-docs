@@ -19,7 +19,7 @@ After you obtained `struct fb_info *`, you can use FPS library as simple as foll
   fps_print(fbi);
 ```
 
-Now `Hello, world!` should appear at the left upper corner of the screen. This doesn't seem very helpful, so let's actually print FPS rate.
+Now `Hello, world!` should appear at the left upper corner of the screen. This doesn't seem very useful, so let's actually print FPS rate:
 
 ```c
   struct fb_info *fbi = fb_lookup(0);
