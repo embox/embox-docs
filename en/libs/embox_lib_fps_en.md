@@ -76,5 +76,5 @@ Things can be more tricky if you want frame to be placed in certain memory area 
   }
 ```
 
-NOTE: This will work in a correct way only if given FB supports changing base of the frame buffer. Otherwise, only "simple" double-buffering example will work.
+NOTE: This will work in a correct way only if given video output device supports changing base of the frame buffer. Otherwise, only "simple" double-buffering example will work.
 
