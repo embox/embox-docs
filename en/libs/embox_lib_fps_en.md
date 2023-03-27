@@ -1,6 +1,6 @@
-# FPS: Helpful library for video output
+# FPS: Useful library for video output
 
-From the name of this library it's clear that it's supposed to be used for frame-per-second count, but it also have a number of features which can help you to work with graphics output.
+From the name of this library it's clear that it's supposed to be used for frame-per-second count, but it also have a number of features, which can help you to work with graphics output.
 
 ## Interface
 
@@ -10,16 +10,16 @@ Header file: `#include <fps/fps.h>`
 
 ## Basic usage
 
-At first make sure to be familiar with frame buffer interface: [[Frame buffer]]
+At first, make sure to be familiar with frame buffer interface: [[Frame buffer]].
 
-After your obtained `struct fb_info *`, you can use FPS library as simple as follows:
+After you obtained `struct fb_info *`, you can use FPS library as simple as follows:
 ```c
   struct fb_info *fbi = fb_lookup(0);
   fps_set_format("Hello, world!");
   fps_print(fbi);
 ```
 
-Now `Hello, world!` should appear at the left upper corner of the screen. This doesn't seem very helpful, so let's actually print FPS rate.
+Now `Hello, world!` should appear at the left upper corner of the screen. This doesn't seem very useful, so let's actually print FPS rate:
 
 ```c
   struct fb_info *fbi = fb_lookup(0);
@@ -39,7 +39,7 @@ Sometimes rendering scene takes a lot of time, so if we draw directly to frame b
 
 The idea is to store additional "back" buffer for drawing, while main frame remains unchanged.
 
-First way to use it is as follows:
+The first way to use it is as follows:
 ```c
 struct fb_info *fbi = fb_lookup(0);
 
@@ -76,5 +76,5 @@ Things can be more tricky if you want frame to be placed in certain memory area 
   }
 ```
 
-NOTE: This will work in a correct way only if given FB supports chaning base of the frame buffer. Otherwise only "simple" double-buffering example will work.
+NOTE: This will work in a correct way only if given video output device supports changing base of the frame buffer. Otherwise, only "simple" double-buffering example will work.
 
