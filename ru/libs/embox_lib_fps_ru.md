@@ -1,6 +1,6 @@
 # FPS: Полезная библиотека для вывода видео
 
-Из названия библиотеки (FPS -- «frame-per-second») следует, что её можно использовать для подсчёта кадров в секунду. Но она также имеет ряд функций, которые могут помочь Вам в работе с графическим выводом.«»
+Из названия библиотеки (FPS -- «frame-per-second») следует, что её можно использовать для подсчёта кадров в секунду. Но она также имеет ряд функций, которые могут помочь Вам в работе с графическим выводом.
 
 ## Интерфейс
 
@@ -33,13 +33,13 @@
 
 Теперь на экране (на второй строчке) должна появиться надпись наподобие «FPS=10».
 
-## Double buffering
+## Двойная буферизация
 
-Sometimes rendering scene takes a lot of time, so if we draw directly to frame buffer base, glitches will appear on the screen. Double buffering is a technique that can solve this problem.
+Иногда рендеринг сцены занимает много времени, поэтому, если мы отрисовываем сцену непосредственно на базе фрейм-буфера, на экране появятся помехи или т. н. глитчи. Двойная буферизация -- это метод, который позволяет решить эту проблему.
 
-The idea is to store additional "back" buffer for drawing, while main frame remains unchanged.
+Идея в том, чтобы хранить дополнительный буфер «back» для отрисовки, пока основной фрейм остаётся неизменным.
 
-The first way to use it is as follows:
+Ниже представлен первый способ использования «back»-буфера:
 ```c
 struct fb_info *fbi = fb_lookup(0);
 
@@ -49,18 +49,18 @@ while (1) {
         uint8_t *current_frame = fps_current_frame_fbi);
         draw_something(current_frame);
         fps_print(fbi);
-        /* Move content of the back buffer to screen */
+        /* Переместить содержимое «back»-буфера на экран */
         fps_swap(fbi);
 }
 ```
 
-Things can be more tricky if you want frame to be placed in certain memory area (for example, if it's special device-specific memory for temporary buffer). In this case you can set frame base manually with following functions:
+Способы могут быть более мудрёными, если Вы хотите, чтобы фрейм был помещён в определённую область памяти (например, если это специализированная память конкретного устройства для временного буфера). В этом случае Вы можете установить основу фрейма, используя следующие функции:
 
 ```c
   void fps_set_base_frame(struct fb_info *fb, void *base_frame);
   void fps_set_back_frame(struct fb_info *fb, void *base_back_frame);
 
-  /* Minimal example may look like this */
+  /* Простой пример может выглядеть следующим образом */
   struct fb_info *fbi = fb_lookup(0);
 
   fps_set_base_frame(fbi, some_addr_1);
@@ -71,9 +71,9 @@ Things can be more tricky if you want frame to be placed in certain memory area 
         draw_something(current_frame);
         fps_print(fbi);
 
-        /* Move content of the back buffer to screen */
+        /* Переместить содержимое «back»-буфера на экран */
         fps_swap(fbi);
   }
 ```
 
-NOTE: This will work in a correct way only if given FB supports changing base of the frame buffer. Otherwise, only "simple" double-buffering example will work.
+Обратите внимание: это будет корректно работать только в случае, если данное устройство вывода видео поддерживает изменение базы фрейм-буфера. В противном случае, будет работать только «простой» пример двойной буферизации.
