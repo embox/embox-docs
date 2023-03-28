@@ -18,16 +18,16 @@ For checking of connection you should ping the `10.0.2.16` interface. If connect
 To exit from qemu, you should type at first `ctrl + a`, and then `X`.
 
 
-# Отладка
+# Debugging
 
-Для работы в режиме отладки можно использовать тот же скрипт, передав ему в качестве параметров флаги -s -S -no-kvm, то есть:
+You can use the same script for working in debugging mod. For this purpose just send `-s`, `-S`, `-no-kvm` flags as parameters to this script as follows:
 
 ```
 $ sudo ./scripts/qemu/auto_qemu -s -S -no-kvm
 ```
-После этого QEMU будет ожидать подключения gdb-клиентом.
+After qemu will wait connection of gdb-client.
 
-Для отладки с помощью консольного отладчика В другом терминале нужно запустить gdb:
+For debugging with help of console bebugger it's necessary to run gdb in other terminal:
 
 ```
 $ gdb ./build/base/bin/embox
@@ -35,6 +35,6 @@ $ gdb ./build/base/bin/embox
 (gdb) target extended-remote :1234 
 (gdb) continue
 ```
-Cистема начнет загрузку.
+The system'll start loading.
 
-В любой момент в терминале gdb можно нажать ctrl + 'c', посмотреть стек текущего потока (backtrace), установить точки останова (break <имя функции>, break <имя файла>:<номер строки>). 
+In any moment you can type `ctrl + c` in gdb-terminal and see current thread stack (backtrace), then to install breakpoints (break <name of function>, break <name of file>:<line number>).
