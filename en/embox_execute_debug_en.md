@@ -13,9 +13,9 @@ $ sudo apt-get install ethtool
 ```
 If the running has finished successfully, messages will output on qemu screen. After running system the "embox" inviting will appear, so now you can execute commands for implementation. For example, `help` will display list of available commands.
 
-Для проверки соединения можно пропинговать интерфейс 10.0.2.16. Если соединение установлено, к терминалу можно подключиться по telnet.
+For checking of connection you should ping the `10.0.2.16` interface. If connection is installed, you can to connect to the terminal, using `telnet`.
 
-Для выхода из Qemu нужно набрать последовательность ctrl + 'a', затем 'X'. 
+To exit from qemu, you should type at first `ctrl + a`, and then `X`.
 
 
 # Отладка
