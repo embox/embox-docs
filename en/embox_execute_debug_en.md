@@ -37,4 +37,4 @@ $ gdb ./build/base/bin/embox
 ```
 The system'll start loading.
 
-In any moment you can type `ctrl + c` in gdb-terminal and see current thread stack (backtrace), and then to install breakpoints (break <name of function>, break <name of file>:<line number>).
+In any moment you can type `ctrl + c` in gdb-terminal and see current thread stack (backtrace), and then to install breakpoints (break &lt name of function &gt, break &lt name of file &gt:&lt line number &gt).
