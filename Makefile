@@ -44,16 +44,16 @@ user_manual_ru:
 	ru/embox_quick_overview_ru.md \
 	ru/embox_quick_start_ru.md \
 	ru/embox_modular_structure_ru.md \
-	ru/platforms/embox_supported_platforms_ru.md \
-	ru/platforms/embox_supported_platforms_qemu_ru.md \
-	ru/platforms/embox_supported_platforms_x86_ru.md \
-	ru/platforms/embox_supported_platforms_arm_ru.md \
 	ru/embox_build_ru.md \
 	ru/embox_execute_debug_ru.md \
 	ru/examples/embox_hello_world_example_ru.md \
 	ru/examples/embox_blinking_led_example_ru.md \
 	ru/examples/embox_external_app_example_ru.md \
 	ru/embox_cxx_support_ru.md \
+	ru/platforms/embox_supported_platforms_ru.md \
+	ru/platforms/embox_supported_platforms_qemu_ru.md \
+	ru/platforms/embox_supported_platforms_x86_ru.md \
+	ru/platforms/embox_supported_platforms_arm_ru.md \
 	ru/drivers/embox_drivers_ru.md \
 	ru/drivers/embox_drivers_diag_ru.md \
 	ru/drivers/embox_drivers_interrupt_controllers_ru.md \
