@@ -109,11 +109,11 @@
 ## Установка эмулятора QEMU
 Поддерживаемые архитектуры: `x86`, `ARM`, `MIPS`, `Sparc`, `PPC`, `Microblaze`.
 
-***QEMU*** *может быть установлен следующим способом:*
+QEMU может быть установлен следующим способом:
 ```
     $ sudo apt-get install qemu-system-<ARCH> 
 ```
-где <ARCH> -- это i386, arm, sparc, mips, ppc или misc (для microblaze).
+где `<ARCH>` -- это i386, arm, sparc, mips, ppc или misc (для microblaze).
 Примечание: Все пакеты QEMU можно установить единым пакетом:
 ```
     $ sudo apt-get install qemu-system
@@ -124,7 +124,7 @@
 ```
    $ make confload-<ARCH>/qemu
 ```
-Где <ARCH>: x86, arm, mips, ppc, sparc, microblaze.
+Где `<ARCH>`: x86, arm, mips, ppc, sparc, microblaze.
 
 Пример под x86:
 ```
