@@ -112,15 +112,15 @@ Or you can build cross-compiler with the script in the project's root folder:
 As the result ***ARCH-elf-toolchain.tar.bz2*** archive will be created. Than you need to extract files from the archive and set up `PATH` enviroment variable.
 
 ## QEMU installation
-Supported CPU architectures: x86, ARM, MIPS, Sparc, PPC, Microblaze.
+Supported CPU architectures: `x86`, `ARM`, `MIPS`, `Sparc`, `PPC`, `Microblaze`.
 
-***QEMU*** can be installed in the following way:
+QEMU can be installed in the following way:
 ```
     $ sudo apt-get install qemu-system-<ARCH>
 ```
-Where <ARCH>: i386, arm, sparc, mips, ppc or misc (for microblaze).
+Where `<ARCH>`: i386, arm, sparc, mips, ppc or misc (for microblaze).
 
-Notice: QEMU packages for all supported architectures can be installed with a single command:
+QEMU packages for all supported architectures can be installed with a single command:
 ```
     $ sudo apt-get install qemu-system
 ```
@@ -130,13 +130,13 @@ Set up default configuration for the desired platform:
 ```
     $ make confload-<ARCH>/qemu
 ```
-where <ARCH>: x86, arm, mips, ppc, sparc, microblaze.
+Where `<ARCH>`: x86, arm, mips, ppc, sparc, microblaze.
     
-***Example for x86:***
+Example for x86:
 ```
     make confload-x86/qemu
 ```
-***Build Embox:***
+Build Embox:
 ```
     $ make
 ```
@@ -148,7 +148,7 @@ Example of how to build with 4 parallel jobs:
 ```
     $ make -j4
 ```
-***Now you are able to run Embox:***
+Now you are able to run Embox:
 ```
     $ ./scripts/qemu/auto_qemu
 ```
@@ -161,23 +161,25 @@ Console output example:
 If all unit tests passed successfully and all modules loaded, then command prompt will appear.
 Now you can execute commands included in the configuration (`mods.conf`). You can start with ***help*** command which prints list of available commands.
 
-Press ***ctrl+’A’*** and then `***x***` to exit from QEMU.
+Press `ctrl + A` and then `x` to exit from QEMU.
 
 ## Preliminaries to Mybuild build system
-***Embox*** is modular and configurable. Declarative program language ***Mybuild*** has been developed for these features. 
+***Embox*** is modular and configurable. Declarative program language Mybuild has been developed for these features. 
 Mybuild allows to describe both single modules and whole target system.
 
 ***A module*** is a base concept for build system.
-**A module description** contains:
-    * source files list
-    * options, which can be set for the module during configuration
-    * dependences list
+A module description contains:
+    
+* source files list
+* options, which can be set for the module during configuration
+* dependences list
 
 ***The configuration*** is a particular description of the whole system.
 It contains:
-    * list of required modules
-    * modules options
-    * build rules (e. g. cross-compiler, additional compiler flags, memory map etc.)
+
+* list of required modules
+* modules options
+* build rules (e. g. cross-compiler, additional compiler flags, memory map etc.)
 
 Graph of the system will be based on the configuration and modules descriptions.
     
