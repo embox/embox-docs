@@ -6,7 +6,7 @@ Clone git repository:
 ```
     $ git clone https://github.com/embox/embox
 ```
-Or download as an archive [https://github.com/embox/embox/releases](https://github.com/embox/embox/releases).
+Or download as an archivefrom: [https://github.com/embox/embox/releases](https://github.com/embox/embox/releases)
 
 ## Work on Windows or MacOS
 ### Please follow the next recommendations:
@@ -17,10 +17,9 @@ Download an actual version of PowerShell:
 Open PowerShell as an administrator and install WSL2 (please pay your attention to the demands on Windows version):
 
 [How to install WSL2](https://learn.microsoft.com/en-us/windows/wsl/install-manual)
-```
-    Before the next step upgrade WSL1 to WSL2 if you did'nt do this(the instruction is in a link above).
-    In other way Embox won't run on Windows.
-```
+
+**NOTE:** Before the next step upgrade WSL1 to WSL2 if you did'nt do this(the instruction is in a link above). In other way Embox won't run on Windows.
+
 
 ### Download Ubuntu from Microsoft Store
 Check yout version of WSL the next way: insert the command below in PowerShell:
@@ -38,17 +37,17 @@ Run the commands below in command line of Ubuntu for installing necessary progra
     sudo apt-get install python3
     sudo apt-get install python-is-python3
 ```
-Clone version of embox to yourself(use https or ssh):
+Clone version of embox to yourself (use https or ssh):
 ```
     git clone <https://github.com/embox/embox.git>
     git clone <git@github.com:embox/embox.git>
 ```
 
-Open the directory of the embox project
+Open the directory of the embox project:
 ```
     cd embox
 ```
-Run the next three commands
+Run the next three commands:
 ```
     make confload-x86/qemu
     make
@@ -61,8 +60,8 @@ If it's correct -- you can use the recommendations from the article(the link is 
 
 
 ## Enviroment Settings
-Minimal required packages: *make*, *gcc*, (cross-compiler for target platform. see "Cross-compiler installation").
-Optional packages, which are recomended to install at once: *build-essential*, *gcc-multilib*, *curl*, *libmpc-dev*, *python*.
+Minimal required packages: **make**, **gcc**, (cross-compiler for target platform. see "Cross-compiler installation").
+Optional packages, which are recomended to install at once: **build-essential**, **gcc-multilib**, **curl**, **libmpc-dev**, **python**.
 
 For Debian/Ubuntu:
 ```
@@ -87,7 +86,7 @@ Please note, it's required to install another packages if you already set up the
 ```
     $ sudo apt install arm-none-eabi-gcc
 ```
-or for Debian:
+***or for Debian***:
 ```
     $ sudo apt install gcc-arm-none-eabi
 ```
@@ -113,15 +112,15 @@ Or you can build cross-compiler with the script in the project's root folder:
 As the result ***ARCH-elf-toolchain.tar.bz2*** archive will be created. Than you need to extract files from the archive and set up `PATH` enviroment variable.
 
 ## QEMU installation
-Supported CPU architectures: x86, ARM, MIPS, Sparc, PPC, Microblaze.
+Supported CPU architectures: `x86`, `ARM`, `MIPS`, `Sparc`, `PPC`, `Microblaze`.
 
 QEMU can be installed in the following way:
 ```
     $ sudo apt-get install qemu-system-<ARCH>
 ```
-Where <ARCH>: i386, arm, sparc, mips, ppc or misc (for microblaze).
+Where `<ARCH>`: i386, arm, sparc, mips, ppc or misc (for microblaze).
 
-Notice: QEMU packages for all supported architectures can be installed with a single command:
+QEMU packages for all supported architectures can be installed with a single command:
 ```
     $ sudo apt-get install qemu-system
 ```
@@ -131,7 +130,8 @@ Set up default configuration for the desired platform:
 ```
     $ make confload-<ARCH>/qemu
 ```
-where <ARCH>: x86, arm, mips, ppc, sparc, microblaze.
+Where `<ARCH>`: x86, arm, mips, ppc, sparc, microblaze.
+    
 Example for x86:
 ```
     make confload-x86/qemu
@@ -140,7 +140,7 @@ Build Embox:
 ```
     $ make
 ```
-or for parallel building with N parallel jobs:
+or for parallel building with **N** parallel jobs:
 ```
     $ make -jN
 ```
@@ -161,37 +161,55 @@ Console output example:
 If all unit tests passed successfully and all modules loaded, then command prompt will appear.
 Now you can execute commands included in the configuration (`mods.conf`). You can start with ***help*** command which prints list of available commands.
 
-Press ***ctrl+’A’*** and then `***x***` to exit from Qemu.
+Press `ctrl + A` and then `x` to exit from QEMU.
 
 ## Preliminaries to Mybuild build system
-Embox is modular and configurable. Declarative program language "Mybuild" has been developed for these features. 
+***Embox*** is modular and configurable. Declarative program language Mybuild has been developed for these features. 
 Mybuild allows to describe both single modules and whole target system.
 
-A module is a base concept for build system. A module description contains: source files list, options which can be set for the module during configuration, and dependences list.
+***A module*** is a base concept for build system.
+A module description contains:
+    
+* source files list
+* options, which can be set for the module during configuration
+* dependences list
 
-The configuration is a particular description of the whole system. It contains list of required modules, modules options and build rules (cross-compiler, additional compiler flags, memory map etc.).
+***The configuration*** is a particular description of the whole system.
+It contains:
+
+* list of required modules
+* modules options
+* build rules (e. g. cross-compiler, additional compiler flags, memory map etc.)
 
 Graph of the system will be based on the configuration and modules descriptions.
-Build system, that generates different build artifacts: linker scripts, makefiles, headers.
-It's not necesary to include all modules, they will be enabled using dependencies for each module included in the initial configuration list.
+    
+Build system, that generates different build artifacts: `linker scripts`, `makefiles`, `headers`.
+    
+It's not necesary to include all modules, they will be enabled, using dependencies.
 
 Current configuration locates in ***conf/*** folder. It can be set up with:
 ```
     $ make confload-<CONF_NAME>
 ```
-For example, to set up demo configuration for qemu-arm you should do the following:
+For example, to set up demo configuration for ***qemu-system-arm*** you should do the following:
 ```
     $ make confload-arm/qemu
 ```
-Use: 
+To get the list of all possible configurations, use: 
 ```
     $ make confload
 ```
-to get the list of all possible configurations.
 
-After you set up some configuration you can tune configuration due to your requirements.
-You can add ***include \<PACKAGE_NAME\>\<MODULE_NAME\>*** to your ***conf/mods.conf*** file to enable additional application.
-For example, add ***include embox.cmd.help*** to enable ***`help`*** command.
+After you set up some configuration you can customize it to your requirements.
+    
+To enable additional application, you can insert to your ***conf/mods.conf*** file the line below:
+```
+    include \<PACKAGE_NAME\>\<MODULE_NAME\>
+```
+For example, to enable ***`help`*** command type the following:
+```
+    include embox.cmd.help
+```
 
 ## "Hello world" application
 Embox application is an usual Embox module with special attributes. These attributes declare your module as an executable application.
@@ -234,7 +252,8 @@ To add your own simplest application "Hello world" you can do the following:
 ```
      $ ./scripts/qemu/auto_qemu
 ```
- * Type ***help*** in Embox console to check if there is ***hello_world*** in commands list. Execute ***hello_world*** command and you will see:
+ * Type ***help*** in Embox console to check if there is ***hello_world*** in commands list.
+ Execute ***hello_world*** command and you will see:
 ```
      root@embox:/#hello_world
      Hello, world!
@@ -253,14 +272,16 @@ Let's look at the Mybuild file from "Hello world" example in more details:
      }
 ```
 The first line contains package name ***embox.cmd***. In Embox all modules are organized into packages.
-Full module name consist of the corresponding package name appended with module name. Module name is defined in string ***module hello_world***.
+Full module name consists of the corresponding package name appended with module name.
+Module name is defined in string ***module hello_world***.
 
 ## Debugging
-You can use the same script with *-s -S -no-kvm* flags for debugging:
+You can use the same script with `-s`, `-S`, `-no-kvm` flags for debugging:
 ```
     $ sudo ./scripts/qemu/auto_qemu -s -S -no-kvm
 ```
-After running that QEMU waits for a connection from a gdb-client. Run gdb in the other terminal:
+After running that QEMU waits for a connection from a gdb-client.
+Run gdb in the other terminal:
 ```
     $ gdb ./build/base/bin/embox
     ...
@@ -269,10 +290,11 @@ After running that QEMU waits for a connection from a gdb-client. Run gdb in the
 ```
 The system starts to load.
 
-At any moment in gdb terminal you can type <kbd>ctrl + C</kbd> and see the stack of the current thread (`backtrace`) or set breakpoints (`break <function name>`, `break <file name>:<line number>`).
+At any moment in gdb terminal you can type `ctrl + C` and see the stack of the current thread (`backtrace`) or set breakpoints (`break <function name>`, `break <file name>:<line number>`).
 
 ## Connection of external repository
-Embox allows to connect external repo to modules and templates. It's enough to specify root directory of repository for this purpose:
+Embox allows to connect external repo to modules and templates.
+It's enough to specify root directory of repository for this purpose:
 ```
     make ext_conf EXT_PROJECT_PATH=<your projects path>
 ```
