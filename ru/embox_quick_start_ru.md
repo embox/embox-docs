@@ -6,7 +6,7 @@
 ```
     $ git clone https://github.com/embox/embox
 ```
-Либо скачиваем архивом из [https://github.com/embox/embox/releases](https://github.com/embox/embox/releases).
+Либо скачиваем архивом из: [https://github.com/embox/embox/releases](https://github.com/embox/embox/releases)
  
 ## Запуск в Windows (и MacOS)
 ### Выполните следующие шаги:
@@ -89,16 +89,16 @@
 ```
     $ sudo apt install gcc-arm-none-eabi
 ```
-Вы можете также скачать архив с набором ARM-инструментов(тулчейном) по ссылке: [https://launchpad.net/gcc-arm-embedded](https://launchpad.net/gcc-arm-embedded).
+Вы можете также скачать архив с набором ARM-инструментов(тулчейном) по ссылке: [https://launchpad.net/gcc-arm-embedded](https://launchpad.net/gcc-arm-embedded)
 Затем нужно распаковать архив и настроить переменную окружения `PATH`:
 ```
    $ export PATH=$PATH:<путь к тулчейну>/gcc-arm-none-eabi-<version>/bin
 ```
 
 ### SPARC, Microblaze, MIPS, PowerPC, MSP430:
-Для этих архитектур можно воспользоваться нашим проектом по сборке кросс-компилятора: [https://github.com/embox/crosstool](https://github.com/embox/crosstool).
+Для этих архитектур можно воспользоваться нашим проектом по сборке кросс-компилятора: [https://github.com/embox/crosstool](https://github.com/embox/crosstool)
 
-Также можно скачать последнюю версию архива отсюда: [https://github.com/embox/crosstool/releases](https://github.com/embox/crosstool/releases).
+Также можно скачать последнюю версию архива отсюда: [https://github.com/embox/crosstool/releases](https://github.com/embox/crosstool/releases)
 
 Или собрать его, выкачав скрипты из репозитория с помощью команды:
 ```
@@ -107,9 +107,9 @@
 После должен появиться архив с тулчейном — `ARCH-elf-toolchain.tar.bz2`. Затем его нужно распаковать и добавить в переменную окружения `PATH`, как показано выше для ARM.
 
 ## Установка эмулятора QEMU
-Поддерживаемые архитектуры: x86, ARM, MIPS, Sparc, PPC, Microblaze.
+Поддерживаемые архитектуры: `x86`, `ARM`, `MIPS`, `Sparc`, `PPC`, `Microblaze`.
 
-QEMU может быть установлен следующим способом:
+***QEMU*** *может быть установлен следующим способом:*
 ```
     $ sudo apt-get install qemu-system-<ARCH> 
 ```
