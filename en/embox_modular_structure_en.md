@@ -2,7 +2,7 @@
 
 Important features of Embox are: **modularity** and **configurability**.
 
-A modularity is splitting project into small logical parts that is modules.
+A **modularity** is splitting project into small logical parts that is modules.
 
 And **configurability** is ability to determinate the characteristics of the end system,
 based on list of modules and their parameters.
@@ -28,13 +28,14 @@ The example of package naming:
 ### Interfaces and abstract modules
 Interfaces for modules are direct analogues of abstract classes and interfaces in OOP.
 
-Module description language supports **interface** that allows to to introduce the **interface** concept (modules without implementation)
-and **abstract modules** (modules with partial implementation).
+**Module description language** supports **interface** that allows to to introduce the next points:
 
-This method allows you to choose from the list of modules (that implement the same interface, but have different algorithm) the needed one.
+* the **interface** concept (modules without implementation)
+* **abstract modules** (modules with partial implementation)
 
-To mark a module as inherited, you need to use `abstract` keyword.
+This method allows you to choose from the list of modules (that implement the same interface, but have different algorithms) the needed one.
 
+To mark a module as inherited, you need to use the `abstract` keyword.
 The example of module declaration:
 ```java
    package embox.arch
@@ -43,7 +44,6 @@ The example of module declaration:
    //...
 ```
 To point at inheritance, we use `extends` keyword.
-
 The instance of inheritance from the abstract module:
 ```java
    module interrupt_stub extends embox.arch.interrupt {
@@ -59,29 +59,30 @@ Description of every module consists of several possible attributes:
 
 #### Files of source code
 A module can point at list of file, which you need to compile and to add in a final image.
-Except "ordinary" files in C and assembler, it's possible to include header files and additional linker scripts.
 
-Types of files differ according to file extension: `.c/.S`, `.h`, `.lds.S`.
+Except **"ordinary" files** in C and assembler, it's possible to include **header files** and **additional linker scripts**.
 
-**.c/.S** is a source code, written in C or assembler. In the assembly process it's compelled and included in final image of system.
+**Types of files differ according to file extension: ".c/.S", ".h", ".lds.S".**
+
+**".c/.S"** is a **source code**, written in C or assembler. In the assembly process it's compelled and included in final image of system.
 During the compilation it's possible to get values of options of module that connected with files of source code.
 
-**.h** is a header file containing the definitions, needed for implementation of interface.
+**".h"** is a **header file** containing the definitions, needed for implementation of interface.
 During the building of module the special header file is generated. It has all listed .h-files of this module.
 
 It allows you to use different implementations of some interface without changing the source code of the modules that use it.
 Such way of abstraction is necessary, because different implementations can define one or the other structure in different ways
 while this structure can be used by other modules without knowledge about details of implementation.
 
-**.lds.S** are linker scripts that allow you to affect on loading the modules in final image. The typical using is an addition of new sections.
+**".lds.S"** are **linker scripts** that allow you to affect on loading the modules in final image. The typical using is an addition of new sections.
 
-The example of adding the **.h-file** to the module:
+The example of adding the **".h-file"** to the module:
 ```java
    module interrupt_stub extends embox.arch.interrupt {
       source "interrupt_stub.h"
    }
 ```
-The instance of adding the **.lds.S-file** and **.c-file** to the module:
+The instance of adding the **".lds.S-file"** and **".c-file"** to the module:
 ```java
    module static_heap extends heap_place {
       //...
@@ -94,18 +95,16 @@ The instance of adding the **.lds.S-file** and **.c-file** to the module:
 
 #### Options
 **The characteristics of options:**
-
 * allow you to define numerical, boolean and string parameters at the configuration stage
-* their parameters can affect how the module is assembled, initialized and how it works
 * can have default value, if the value doesn't exist -- ad it to your configuration
 
 Options allow you to define **numerical**, **boolean** and **string parameters** at the configuration stage.
-These parameters can affect how the module is assembled, initialized and how it works.
+
+These **parameters can affect how the module is assembled, initialized** and **how it works**.
 
 To define a type of some options, it's needed to write it after the `option` keyword.
 
 To get a value of some option during the compilation of source code, it's used the next **special macros**:
-
 * **OPTION_STRING_GET** is for string options
 * **OPTION_NUMBER_GET** is for numerical options
 * **OPTION_BOOLEAN_GET** is for boolean options
@@ -114,24 +113,24 @@ The argument of macro is option name defined in **my-file**.
 #### Dependencies
 **Dependencies** are the way to show to the assembly system that the correct module working is impossible without other ones.
 
-The list of dependencies can include some interfaces. It means that only one module implemented required interface can be included in a building.
+The **list of dependencies** can include some interfaces.
+It means that only one module implemented required interface can be included in a building.
 
-Use the `depends` attribute to define dependencies between modules.
+Use the **"depends"** attribute to define dependencies between modules.
 You can count modules and interfaces in value of this attribute.
 
 Assembly system guarantees that the dependencies of specific module will be added when this module is included in the system.
-We use of the interface implementations in case when dependencies have interface.
 
-In some cases you just need to add a module what you need without changing the loading order.
-This method is used for such global modules as, for example: **multiprocessing support**, **logging**, **debug statement (assert)**.
+In some cases you just need **to add a module** what you need **without changing the loading order**.
+This method is used for such global modules as, **for example**: **"multiprocessing support"**, **"logging"**, **"debug statement" (assert)**.
 
-Due to the fact that these modules don't have a status in the usual sence (such as "loaded" or "unloaded"),
-it's required to add the *@NoRuntime* annotation to the **depends** attribute.
+Due to the fact that these **modules don't have a status** in the usual sence (such as **"loaded"** or **"unloaded"**),
+it's required to add the ***@NoRuntime*** annotation to the **"depends"** attribute.
+
 In this case, the dependencies will be used during the building , but won't determine module loading order.
 
 ### Annotations
 **The characteristics of annotations:**
-
 * are used for changing the semantics of description elements
 * allow to extend description language without changing the grammar
 * make description language more flexible
@@ -144,17 +143,17 @@ The instance of implementation the abstract module with help of the annotation:
 
 ## Configuration description
 **Module description** is used to create a target image.
+
 During the configuration the assembly system allows to merge modules of system (e. g. kernel modules, drivers, tests, applications)
 and to install parameters for these, and also to define additional parameters to create an image for different hardware platforms.
 
 ### The structure of configuration
-Image configuration is running through file editing in the **conf/** directory.
+Image configuration is running through file editing in the **"conf/"** directory.
 It contains the following:
-
-* **lds.conf** -- contains the definition of memory card, which is used by specific hardware platforms
-* **mods.conf** -- contains names and options of modules, which will be included in OS image.
+* **"lds.conf"** -- contains the definition of memory card, which is used by specific hardware platforms
+* **"mods.conf"** -- contains names and options of modules, which will be included in OS image.
 Also you can set every modules in this file to new values
-* **rootfs** -- contains files, which will be included into the file system
+* **"rootfs"** -- contains files, which will be included into the file system
 
 ### Configuration process
 To use some module in OS image means to add it into some OS configuration.
@@ -169,7 +168,7 @@ For example, to get a basic configuration to support x86 platform, use the next 
 ```
    make confload-x86/qemu
 ```
-This command loads basic "qemu" configuration for x86 platform in the **conf/** directory.
+This command loads basic "qemu" configuration for x86 platform in the **"conf/"** directory.
 
 The list of basic configurations you can see and choose the needed one, type:
 ```
