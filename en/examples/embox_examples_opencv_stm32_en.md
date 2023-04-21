@@ -19,7 +19,6 @@ This board has enough flash memory for OpenCV, so it's pretty easy to run a simp
 
 3. Run `edges 20` on Embox console
 
-![](https://raw.githubusercontent.com/wiki/embox/embox/images/platforms/stm32f769idiscovery-opencv.jpg)
 
 ## STM32F746GDISCOVERY
 This board has only 1MiB flash memory, so it's a little bit more compilated. OpenCV requires too much read-only memory (it's mostly code), so you have to use QSPI flash to run it.
