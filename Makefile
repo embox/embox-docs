@@ -18,6 +18,7 @@ user_manual_en:
 	en/drivers/embox_drivers_flash_en.md \
 	en/drivers/embox_drivers_gpio_en.md \
 	en/drivers/embox_drivers_i2c_en.md \
+	en/examples/embox_hello_world_example_en.md \
 	en/examples/embox_examples_light_sensor_stm32_en.md \
 	en/examples/embox_examples_opencv_stm32_en.md \
 	en/examples/embox_examples_pjsip_stm32_en.md \
