@@ -79,7 +79,7 @@ For example, the abstract module *heap_api*:
 ```
 To add the *heap_simple* module,
 ```
-    module heap_simple extends heap_api {module heap_simple extends heap_api {
+    module heap_simple extends heap_api {
     ...
     }
 ```
@@ -97,11 +97,11 @@ You can manage some flags of compilation. The "conf/build.conf" has them. For ex
 ```
     CFLAGS += -O0
 ```
-To build the Embox with optimization 2, you should the line above to the next one:
+To build the Embox with optimization 2, you should the line above change to the next one:
 ```
     CFLAGS += -O2
 ```
-Also another important flag is the *-g* linker flag, that is the same as adding debugging information in system image:
+Also another important flag is the *-g* linker flag, that is the same as adding debugging information in the system image:
 ```
     LDFLAGS += -N -g
 ```
@@ -160,7 +160,7 @@ The command below will allow you to get graph of modules in png-format:
 ```
     $ make dot
 ```
-После выполнения команды *$ make dot* появится файл *build/doc/embox.png*.After running *make dot* command the *build/doc/embox.png* will appear.
+After running the *make dot* command the *build/doc/embox.png* will appear.
 
 You'll need to install the *graphviz* package:
 ```

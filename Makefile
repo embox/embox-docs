@@ -8,6 +8,7 @@ user_manual_en:
 	en/embox_quick_overview_en.md \
 	en/embox_quick_start_en.md \
 	en/embox_modular_structure_en.md \
+	en/embox_build_en.md \
 	en/platforms/embox_supported_platforms_en.md \
 	en/platforms/embox_supported_platforms_qemu_en.md \
 	en/platforms/embox_supported_platforms_x86_en.md \
