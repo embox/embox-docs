@@ -80,7 +80,7 @@
 ```
 Для подключения модуля *heap_simple*, который также реализует данный интерфейс *heap_api*
 ```
-    module heap_simple extends heap_api {module heap_simple extends heap_api {
+    module heap_simple extends heap_api {
     ...
     }
 ```
