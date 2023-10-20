@@ -11,7 +11,7 @@ Embox поддерживает запуск на qemu со следующими 
 * qemu-system-microblaze
 * qemu-system-sparc
 * qemu-system-riscv32
-* qemu-system-riscv364
+* qemu-system-riscv64
 
 Для запуска на требуемой архитектуре необходимо сконфигурировать Embox:
 ```
